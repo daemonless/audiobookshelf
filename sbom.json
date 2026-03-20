@@ -1,0 +1,1406 @@
+{
+  "image": "audiobookshelf",
+  "generated": "2026-03-20T14:36:06Z",
+  "tags": {
+    "latest": {
+      "arch": "amd64",
+      "app_version": "2.33.1",
+      "source": "upstream",
+      "generated": "2026-03-20T14:35:50Z",
+      "packages": {
+        "freebsd": [
+          {
+            "name": "FreeBSD-audit-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-blocklist",
+            "version": "15.0p3"
+          },
+          {
+            "name": "FreeBSD-bzip2-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-certctl",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-clibs",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-clibs-lib32",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-ctf-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-devmatch",
+            "version": "15.0p2"
+          },
+          {
+            "name": "FreeBSD-fetch",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-kerberos-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-libarchive",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-libbsdstat",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-libcasper",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-libexecinfo",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-libldns",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-libmagic",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-libucl",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-mtree",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-ncurses-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-openssl",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-openssl-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-pkg-bootstrap",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-rc",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-runtime",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-tcpd",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-ufs-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-utilities",
+            "version": "15.0p1"
+          },
+          {
+            "name": "FreeBSD-xz-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-zfs-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-zlib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-zoneinfo",
+            "version": "15.0"
+          },
+          {
+            "name": "Imath",
+            "version": "3.2.2_2"
+          },
+          {
+            "name": "aom",
+            "version": "3.13.1"
+          },
+          {
+            "name": "bash",
+            "version": "5.3.9"
+          },
+          {
+            "name": "binutils",
+            "version": "2.44,1"
+          },
+          {
+            "name": "boost-libs",
+            "version": "1.89.0_2"
+          },
+          {
+            "name": "brotli",
+            "version": "1.2.0,1"
+          },
+          {
+            "name": "c-ares",
+            "version": "1.34.6"
+          },
+          {
+            "name": "cairo",
+            "version": "1.18.2,3"
+          },
+          {
+            "name": "corepack",
+            "version": "0.34.5"
+          },
+          {
+            "name": "dav1d",
+            "version": "1.5.3"
+          },
+          {
+            "name": "execline",
+            "version": "2.9.7.0"
+          },
+          {
+            "name": "expat",
+            "version": "2.7.4"
+          },
+          {
+            "name": "ffmpeg",
+            "version": "8.0.1_1,1"
+          },
+          {
+            "name": "fontconfig",
+            "version": "2.17.1,1"
+          },
+          {
+            "name": "freetype2",
+            "version": "2.14.1"
+          },
+          {
+            "name": "fribidi",
+            "version": "1.0.16"
+          },
+          {
+            "name": "gcc14",
+            "version": "14.2.0_4"
+          },
+          {
+            "name": "gdk-pixbuf2",
+            "version": "2.44.1"
+          },
+          {
+            "name": "gettext-runtime",
+            "version": "0.26"
+          },
+          {
+            "name": "giflib",
+            "version": "5.2.2"
+          },
+          {
+            "name": "glib",
+            "version": "2.84.4,2"
+          },
+          {
+            "name": "gmp",
+            "version": "6.3.0"
+          },
+          {
+            "name": "gnutls",
+            "version": "3.8.12"
+          },
+          {
+            "name": "graphite2",
+            "version": "1.3.14"
+          },
+          {
+            "name": "harfbuzz",
+            "version": "12.3.0"
+          },
+          {
+            "name": "highway",
+            "version": "1.3.0"
+          },
+          {
+            "name": "hwdata",
+            "version": "0.403,1"
+          },
+          {
+            "name": "icu",
+            "version": "76.1,1"
+          },
+          {
+            "name": "indexinfo",
+            "version": "0.3.1_1"
+          },
+          {
+            "name": "jbigkit",
+            "version": "2.1_3"
+          },
+          {
+            "name": "jpeg-turbo",
+            "version": "3.1.3"
+          },
+          {
+            "name": "jq",
+            "version": "1.8.1"
+          },
+          {
+            "name": "lame",
+            "version": "3.100_5"
+          },
+          {
+            "name": "lcms2",
+            "version": "2.17"
+          },
+          {
+            "name": "lerc",
+            "version": "4.0.0"
+          },
+          {
+            "name": "libX11",
+            "version": "1.8.12,1"
+          },
+          {
+            "name": "libXau",
+            "version": "1.0.12"
+          },
+          {
+            "name": "libXdmcp",
+            "version": "1.1.5"
+          },
+          {
+            "name": "libXext",
+            "version": "1.3.6,1"
+          },
+          {
+            "name": "libXfixes",
+            "version": "6.0.1"
+          },
+          {
+            "name": "libXft",
+            "version": "2.3.8"
+          },
+          {
+            "name": "libXrandr",
+            "version": "1.5.4"
+          },
+          {
+            "name": "libXrender",
+            "version": "0.9.12"
+          },
+          {
+            "name": "libXv",
+            "version": "1.0.13,1"
+          },
+          {
+            "name": "libass",
+            "version": "0.17.4"
+          },
+          {
+            "name": "libbluray",
+            "version": "1.4.0,1"
+          },
+          {
+            "name": "libdatrie",
+            "version": "0.2.14_1"
+          },
+          {
+            "name": "libdeflate",
+            "version": "1.25"
+          },
+          {
+            "name": "libdrm",
+            "version": "2.4.131,1"
+          },
+          {
+            "name": "libdvdnav",
+            "version": "7.0.0"
+          },
+          {
+            "name": "libdvdread",
+            "version": "7.0.0"
+          },
+          {
+            "name": "libedit",
+            "version": "3.1.20251016_1,1"
+          },
+          {
+            "name": "libepoll-shim",
+            "version": "0.0.20240608"
+          },
+          {
+            "name": "libffi",
+            "version": "3.5.1"
+          },
+          {
+            "name": "libglvnd",
+            "version": "1.7.0"
+          },
+          {
+            "name": "libiconv",
+            "version": "1.18_1"
+          },
+          {
+            "name": "libidn2",
+            "version": "2.3.8"
+          },
+          {
+            "name": "libjxl",
+            "version": "0.11.2"
+          },
+          {
+            "name": "libnghttp2",
+            "version": "1.68.0"
+          },
+          {
+            "name": "libnghttp3",
+            "version": "1.14.0"
+          },
+          {
+            "name": "libngtcp2",
+            "version": "1.19.0"
+          },
+          {
+            "name": "libogg",
+            "version": "1.3.6,4"
+          },
+          {
+            "name": "libpciaccess",
+            "version": "0.18.1_1"
+          },
+          {
+            "name": "libplacebo",
+            "version": "7.351.0_1"
+          },
+          {
+            "name": "librsvg2-rust",
+            "version": "2.61.3"
+          },
+          {
+            "name": "libtasn1",
+            "version": "4.21.0"
+          },
+          {
+            "name": "libthai",
+            "version": "0.1.30"
+          },
+          {
+            "name": "libudev-devd",
+            "version": "0.6.0"
+          },
+          {
+            "name": "libudfread",
+            "version": "1.2.0"
+          },
+          {
+            "name": "libunibreak",
+            "version": "6.1,1"
+          },
+          {
+            "name": "libunistring",
+            "version": "1.4.1"
+          },
+          {
+            "name": "libunwind",
+            "version": "20250904"
+          },
+          {
+            "name": "libuv",
+            "version": "1.51.0"
+          },
+          {
+            "name": "libv4l",
+            "version": "1.23.0_5"
+          },
+          {
+            "name": "libva",
+            "version": "2.23.0"
+          },
+          {
+            "name": "libvdpau",
+            "version": "1.5"
+          },
+          {
+            "name": "libvorbis",
+            "version": "1.3.7_2,3"
+          },
+          {
+            "name": "libvpx",
+            "version": "1.15.2"
+          },
+          {
+            "name": "libx264",
+            "version": "0.164.3095"
+          },
+          {
+            "name": "libxcb",
+            "version": "1.17.0"
+          },
+          {
+            "name": "libxml2",
+            "version": "2.15.2"
+          },
+          {
+            "name": "llhttp",
+            "version": "9.3.0"
+          },
+          {
+            "name": "lzo2",
+            "version": "2.10_1"
+          },
+          {
+            "name": "mpc",
+            "version": "1.3.1_1"
+          },
+          {
+            "name": "mpdecimal",
+            "version": "4.0.1"
+          },
+          {
+            "name": "mpfr",
+            "version": "4.2.2,1"
+          },
+          {
+            "name": "nettle",
+            "version": "3.10.2"
+          },
+          {
+            "name": "node20",
+            "version": "20.20.0"
+          },
+          {
+            "name": "oniguruma",
+            "version": "6.9.10"
+          },
+          {
+            "name": "openblas",
+            "version": "0.3.30,2"
+          },
+          {
+            "name": "openexr",
+            "version": "3.4.5"
+          },
+          {
+            "name": "openjph",
+            "version": "0.25.3"
+          },
+          {
+            "name": "opus",
+            "version": "1.6"
+          },
+          {
+            "name": "p11-kit",
+            "version": "0.26.2"
+          },
+          {
+            "name": "pango",
+            "version": "1.56.4"
+          },
+          {
+            "name": "pcre2",
+            "version": "10.47_1"
+          },
+          {
+            "name": "pixman",
+            "version": "0.46.2"
+          },
+          {
+            "name": "pkg",
+            "version": "2.5.1"
+          },
+          {
+            "name": "png",
+            "version": "1.6.53"
+          },
+          {
+            "name": "py311-boost-libs",
+            "version": "1.89.0"
+          },
+          {
+            "name": "py311-numpy",
+            "version": "1.26.4_11,1"
+          },
+          {
+            "name": "py311-packaging",
+            "version": "25.0"
+          },
+          {
+            "name": "python311",
+            "version": "3.11.15"
+          },
+          {
+            "name": "readline",
+            "version": "8.3.3"
+          },
+          {
+            "name": "s6",
+            "version": "2.13.2.0"
+          },
+          {
+            "name": "s6-rc",
+            "version": "0.5.6.0"
+          },
+          {
+            "name": "shaderc",
+            "version": "2025.5_1"
+          },
+          {
+            "name": "shared-mime-info",
+            "version": "2.4_2"
+          },
+          {
+            "name": "simdjson",
+            "version": "4.2.4"
+          },
+          {
+            "name": "skalibs",
+            "version": "2.14.4.0"
+          },
+          {
+            "name": "sqlite3",
+            "version": "3.50.4_2,1"
+          },
+          {
+            "name": "srt",
+            "version": "1.5.4"
+          },
+          {
+            "name": "suitesparse-amd",
+            "version": "3.3.4"
+          },
+          {
+            "name": "suitesparse-camd",
+            "version": "3.3.5"
+          },
+          {
+            "name": "suitesparse-ccolamd",
+            "version": "3.3.5"
+          },
+          {
+            "name": "suitesparse-cholmod",
+            "version": "5.3.4"
+          },
+          {
+            "name": "suitesparse-colamd",
+            "version": "3.3.5"
+          },
+          {
+            "name": "suitesparse-config",
+            "version": "7.12.1"
+          },
+          {
+            "name": "suitesparse-umfpack",
+            "version": "6.3.7"
+          },
+          {
+            "name": "svt-av1",
+            "version": "3.1.2"
+          },
+          {
+            "name": "tiff",
+            "version": "4.7.1"
+          },
+          {
+            "name": "vmaf",
+            "version": "3.0.0"
+          },
+          {
+            "name": "vulkan-loader",
+            "version": "1.4.336"
+          },
+          {
+            "name": "wayland",
+            "version": "1.24.0_2"
+          },
+          {
+            "name": "webp",
+            "version": "1.6.0"
+          },
+          {
+            "name": "x265",
+            "version": "4.1"
+          },
+          {
+            "name": "xorgproto",
+            "version": "2024.1"
+          },
+          {
+            "name": "xxhash",
+            "version": "0.8.3"
+          },
+          {
+            "name": "zstd",
+            "version": "1.5.7_1"
+          }
+        ],
+        "dotnet": [],
+        "go": [],
+        "java": [],
+        "node": [
+          {
+            "name": "@socket.io/component-emitter",
+            "version": "3.1.0"
+          },
+          {
+            "name": "@types/cookie",
+            "version": "0.4.1"
+          },
+          {
+            "name": "@types/cors",
+            "version": "2.8.17"
+          },
+          {
+            "name": "@types/debug",
+            "version": "4.1.8"
+          },
+          {
+            "name": "@types/ms",
+            "version": "0.7.31"
+          },
+          {
+            "name": "@types/node",
+            "version": "18.11.18"
+          },
+          {
+            "name": "@types/validator",
+            "version": "13.7.17"
+          },
+          {
+            "name": "MathJax-grunt-cleaner",
+            "version": "0.1.0"
+          },
+          {
+            "name": "accepts",
+            "version": "1.3.8"
+          },
+          {
+            "name": "array-flatten",
+            "version": "1.1.1"
+          },
+          {
+            "name": "asynckit",
+            "version": "0.4.0"
+          },
+          {
+            "name": "audiobookshelf",
+            "version": "2.33.1"
+          },
+          {
+            "name": "axios",
+            "version": "0.27.2"
+          },
+          {
+            "name": "base64-js",
+            "version": "1.5.1"
+          },
+          {
+            "name": "base64id",
+            "version": "2.0.0"
+          },
+          {
+            "name": "beep-boop",
+            "version": "1.2.3"
+          },
+          {
+            "name": "bindings",
+            "version": "1.5.0"
+          },
+          {
+            "name": "bl",
+            "version": "4.1.0"
+          },
+          {
+            "name": "body-parser",
+            "version": "1.20.1"
+          },
+          {
+            "name": "buffer",
+            "version": "5.7.1"
+          },
+          {
+            "name": "buffer-equal-constant-time",
+            "version": "1.0.1"
+          },
+          {
+            "name": "bytes",
+            "version": "3.1.2"
+          },
+          {
+            "name": "call-bind",
+            "version": "1.0.2"
+          },
+          {
+            "name": "chownr",
+            "version": "1.1.4"
+          },
+          {
+            "name": "combined-stream",
+            "version": "1.0.8"
+          },
+          {
+            "name": "content-disposition",
+            "version": "0.5.4"
+          },
+          {
+            "name": "content-type",
+            "version": "1.0.4"
+          },
+          {
+            "name": "cookie",
+            "version": "0.4.1"
+          },
+          {
+            "name": "cookie-parser",
+            "version": "1.4.6"
+          },
+          {
+            "name": "cookie-signature",
+            "version": "1.0.6"
+          },
+          {
+            "name": "corepack",
+            "version": "0.34.5"
+          },
+          {
+            "name": "cors",
+            "version": "2.8.5"
+          },
+          {
+            "name": "debug",
+            "version": "2.6.9"
+          },
+          {
+            "name": "decompress-response",
+            "version": "6.0.0"
+          },
+          {
+            "name": "deep-extend",
+            "version": "0.6.0"
+          },
+          {
+            "name": "delayed-stream",
+            "version": "1.0.0"
+          },
+          {
+            "name": "depd",
+            "version": "2.0.0"
+          },
+          {
+            "name": "destroy",
+            "version": "1.2.0"
+          },
+          {
+            "name": "detect-libc",
+            "version": "2.0.3"
+          },
+          {
+            "name": "dom-serializer",
+            "version": "2.0.0"
+          },
+          {
+            "name": "domelementtype",
+            "version": "2.3.0"
+          },
+          {
+            "name": "domhandler",
+            "version": "5.0.3"
+          },
+          {
+            "name": "domutils",
+            "version": "3.0.1"
+          },
+          {
+            "name": "dottie",
+            "version": "2.0.6"
+          },
+          {
+            "name": "ecdsa-sig-formatter",
+            "version": "1.0.11"
+          },
+          {
+            "name": "ee-first",
+            "version": "1.1.1"
+          },
+          {
+            "name": "encodeurl",
+            "version": "1.0.2"
+          },
+          {
+            "name": "end-of-stream",
+            "version": "1.4.4"
+          },
+          {
+            "name": "engine.io",
+            "version": "6.5.4"
+          },
+          {
+            "name": "engine.io-parser",
+            "version": "5.2.1"
+          },
+          {
+            "name": "entities",
+            "version": "4.4.0"
+          },
+          {
+            "name": "escape-html",
+            "version": "1.0.3"
+          },
+          {
+            "name": "etag",
+            "version": "1.8.1"
+          },
+          {
+            "name": "expand-template",
+            "version": "2.0.3"
+          },
+          {
+            "name": "express",
+            "version": "4.18.2"
+          },
+          {
+            "name": "express-rate-limit",
+            "version": "7.5.1"
+          },
+          {
+            "name": "express-session",
+            "version": "1.17.3"
+          },
+          {
+            "name": "file-uri-to-path",
+            "version": "1.0.0"
+          },
+          {
+            "name": "finalhandler",
+            "version": "1.2.0"
+          },
+          {
+            "name": "follow-redirects",
+            "version": "1.15.5"
+          },
+          {
+            "name": "form-data",
+            "version": "4.0.0"
+          },
+          {
+            "name": "forwarded",
+            "version": "0.2.0"
+          },
+          {
+            "name": "fresh",
+            "version": "0.5.2"
+          },
+          {
+            "name": "fs-constants",
+            "version": "1.0.0"
+          },
+          {
+            "name": "fs-minipass",
+            "version": "2.1.0"
+          },
+          {
+            "name": "function-bind",
+            "version": "1.1.2"
+          },
+          {
+            "name": "get-intrinsic",
+            "version": "1.1.3"
+          },
+          {
+            "name": "github-from-package",
+            "version": "0.0.0"
+          },
+          {
+            "name": "graceful-fs",
+            "version": "4.2.10"
+          },
+          {
+            "name": "has",
+            "version": "1.0.3"
+          },
+          {
+            "name": "has-symbols",
+            "version": "1.0.3"
+          },
+          {
+            "name": "htmlparser2",
+            "version": "8.0.1"
+          },
+          {
+            "name": "http-errors",
+            "version": "2.0.0"
+          },
+          {
+            "name": "iconv-lite",
+            "version": "0.4.24"
+          },
+          {
+            "name": "ieee754",
+            "version": "1.2.1"
+          },
+          {
+            "name": "inflection",
+            "version": "1.13.4"
+          },
+          {
+            "name": "inherits",
+            "version": "2.0.4"
+          },
+          {
+            "name": "ini",
+            "version": "1.3.8"
+          },
+          {
+            "name": "ipaddr.js",
+            "version": "1.9.1"
+          },
+          {
+            "name": "jose",
+            "version": "4.15.4"
+          },
+          {
+            "name": "jsonwebtoken",
+            "version": "9.0.2"
+          },
+          {
+            "name": "jwa",
+            "version": "1.4.1"
+          },
+          {
+            "name": "jws",
+            "version": "3.2.2"
+          },
+          {
+            "name": "lodash",
+            "version": "4.17.21"
+          },
+          {
+            "name": "lodash.includes",
+            "version": "4.3.0"
+          },
+          {
+            "name": "lodash.isboolean",
+            "version": "3.0.3"
+          },
+          {
+            "name": "lodash.isinteger",
+            "version": "4.0.4"
+          },
+          {
+            "name": "lodash.isnumber",
+            "version": "3.0.3"
+          },
+          {
+            "name": "lodash.isplainobject",
+            "version": "4.0.6"
+          },
+          {
+            "name": "lodash.isstring",
+            "version": "4.0.1"
+          },
+          {
+            "name": "lodash.once",
+            "version": "4.1.1"
+          },
+          {
+            "name": "lru-cache",
+            "version": "10.0.3"
+          },
+          {
+            "name": "media-typer",
+            "version": "0.3.0"
+          },
+          {
+            "name": "merge-descriptors",
+            "version": "1.0.1"
+          },
+          {
+            "name": "methods",
+            "version": "1.1.2"
+          },
+          {
+            "name": "mime",
+            "version": "1.6.0"
+          },
+          {
+            "name": "mime-db",
+            "version": "1.52.0"
+          },
+          {
+            "name": "mime-types",
+            "version": "2.1.35"
+          },
+          {
+            "name": "mimic-response",
+            "version": "3.1.0"
+          },
+          {
+            "name": "minimist",
+            "version": "1.2.8"
+          },
+          {
+            "name": "minipass",
+            "version": "3.3.6"
+          },
+          {
+            "name": "minizlib",
+            "version": "2.1.2"
+          },
+          {
+            "name": "mkdirp",
+            "version": "1.0.4"
+          },
+          {
+            "name": "mkdirp-classic",
+            "version": "0.5.3"
+          },
+          {
+            "name": "moment",
+            "version": "2.29.4"
+          },
+          {
+            "name": "moment-timezone",
+            "version": "0.5.43"
+          },
+          {
+            "name": "ms",
+            "version": "2.0.0"
+          },
+          {
+            "name": "napi-build-utils",
+            "version": "2.0.0"
+          },
+          {
+            "name": "negotiator",
+            "version": "0.6.3"
+          },
+          {
+            "name": "node-abi",
+            "version": "3.74.0"
+          },
+          {
+            "name": "node-addon-api",
+            "version": "7.1.1"
+          },
+          {
+            "name": "node-unrar-js",
+            "version": "2.0.2"
+          },
+          {
+            "name": "nodemailer",
+            "version": "6.9.13"
+          },
+          {
+            "name": "object-assign",
+            "version": "4.1.1"
+          },
+          {
+            "name": "object-hash",
+            "version": "2.2.0"
+          },
+          {
+            "name": "object-inspect",
+            "version": "1.12.2"
+          },
+          {
+            "name": "oidc-token-hash",
+            "version": "5.0.3"
+          },
+          {
+            "name": "on-finished",
+            "version": "2.4.1"
+          },
+          {
+            "name": "on-headers",
+            "version": "1.0.2"
+          },
+          {
+            "name": "once",
+            "version": "1.4.0"
+          },
+          {
+            "name": "openid-client",
+            "version": "5.6.1"
+          },
+          {
+            "name": "p-throttle",
+            "version": "4.1.1"
+          },
+          {
+            "name": "parseurl",
+            "version": "1.3.3"
+          },
+          {
+            "name": "passport",
+            "version": "0.6.0"
+          },
+          {
+            "name": "passport-jwt",
+            "version": "4.0.1"
+          },
+          {
+            "name": "passport-strategy",
+            "version": "1.0.0"
+          },
+          {
+            "name": "path-to-regexp",
+            "version": "0.1.7"
+          },
+          {
+            "name": "pause",
+            "version": "0.0.1"
+          },
+          {
+            "name": "pg-connection-string",
+            "version": "2.6.1"
+          },
+          {
+            "name": "prebuild-install",
+            "version": "7.1.3"
+          },
+          {
+            "name": "proxy-addr",
+            "version": "2.0.7"
+          },
+          {
+            "name": "pump",
+            "version": "3.0.2"
+          },
+          {
+            "name": "qs",
+            "version": "6.11.0"
+          },
+          {
+            "name": "random-bytes",
+            "version": "1.0.0"
+          },
+          {
+            "name": "range-parser",
+            "version": "1.2.1"
+          },
+          {
+            "name": "raw-body",
+            "version": "2.5.1"
+          },
+          {
+            "name": "rc",
+            "version": "1.2.8"
+          },
+          {
+            "name": "readable-stream",
+            "version": "3.6.2"
+          },
+          {
+            "name": "retry-as-promised",
+            "version": "7.0.4"
+          },
+          {
+            "name": "safe-buffer",
+            "version": "5.2.1"
+          },
+          {
+            "name": "safer-buffer",
+            "version": "2.1.2"
+          },
+          {
+            "name": "sax",
+            "version": "1.2.4"
+          },
+          {
+            "name": "semver",
+            "version": "7.6.3"
+          },
+          {
+            "name": "send",
+            "version": "0.18.0"
+          },
+          {
+            "name": "sequelize",
+            "version": "6.35.2"
+          },
+          {
+            "name": "sequelize-pool",
+            "version": "7.1.0"
+          },
+          {
+            "name": "serve-static",
+            "version": "1.15.0"
+          },
+          {
+            "name": "setprototypeof",
+            "version": "1.2.0"
+          },
+          {
+            "name": "side-channel",
+            "version": "1.0.4"
+          },
+          {
+            "name": "simple-concat",
+            "version": "1.0.1"
+          },
+          {
+            "name": "simple-get",
+            "version": "4.0.1"
+          },
+          {
+            "name": "socket.io",
+            "version": "4.7.4"
+          },
+          {
+            "name": "socket.io-adapter",
+            "version": "2.5.2"
+          },
+          {
+            "name": "socket.io-parser",
+            "version": "4.2.4"
+          },
+          {
+            "name": "sqlite3",
+            "version": "5.1.7"
+          },
+          {
+            "name": "ssrf-req-filter",
+            "version": "1.1.0"
+          },
+          {
+            "name": "statuses",
+            "version": "2.0.1"
+          },
+          {
+            "name": "string_decoder",
+            "version": "1.3.0"
+          },
+          {
+            "name": "strip-json-comments",
+            "version": "2.0.1"
+          },
+          {
+            "name": "tar",
+            "version": "6.1.15"
+          },
+          {
+            "name": "tar-fs",
+            "version": "2.1.2"
+          },
+          {
+            "name": "tar-stream",
+            "version": "2.2.0"
+          },
+          {
+            "name": "toidentifier",
+            "version": "1.0.1"
+          },
+          {
+            "name": "toposort-class",
+            "version": "1.0.1"
+          },
+          {
+            "name": "tunnel-agent",
+            "version": "0.6.0"
+          },
+          {
+            "name": "type-is",
+            "version": "1.6.18"
+          },
+          {
+            "name": "uid-safe",
+            "version": "2.1.5"
+          },
+          {
+            "name": "unpipe",
+            "version": "1.0.0"
+          },
+          {
+            "name": "util-deprecate",
+            "version": "1.0.2"
+          },
+          {
+            "name": "utils-merge",
+            "version": "1.0.1"
+          },
+          {
+            "name": "uuid",
+            "version": "8.3.2"
+          },
+          {
+            "name": "validator",
+            "version": "13.9.0"
+          },
+          {
+            "name": "vary",
+            "version": "1.1.2"
+          },
+          {
+            "name": "wkx",
+            "version": "0.5.0"
+          },
+          {
+            "name": "wrappy",
+            "version": "1.0.2"
+          },
+          {
+            "name": "ws",
+            "version": "8.11.0"
+          },
+          {
+            "name": "xml2js",
+            "version": "0.5.0"
+          },
+          {
+            "name": "xmlbuilder",
+            "version": "11.0.1"
+          },
+          {
+            "name": "yallist",
+            "version": "4.0.0"
+          }
+        ],
+        "php": [],
+        "python": [
+          {
+            "name": "example",
+            "version": "21.12"
+          },
+          {
+            "name": "numpy",
+            "version": "1.26.4"
+          },
+          {
+            "name": "packaging",
+            "version": "25.0"
+          }
+        ],
+        "ruby": [],
+        "rust": []
+      },
+      "summary": {
+        "freebsd": 160,
+        "dotnet": 0,
+        "go": 0,
+        "java": 0,
+        "node": 179,
+        "php": 0,
+        "python": 3,
+        "ruby": 0,
+        "rust": 0,
+        "total": 342
+      }
+    }
+  }
+}
