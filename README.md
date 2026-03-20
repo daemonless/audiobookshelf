@@ -13,7 +13,7 @@ Self-hosted audiobook and podcast server.
 | | |
 |---|---|
 | **Port** | 13378 |
-| **Registry** | `localhost/audiobookshelf` |
+| **Registry** | `ghcr.io/daemonless/audiobookshelf` |
 | **Source** | [https://github.com/advplyr/audiobookshelf](https://github.com/advplyr/audiobookshelf) |
 | **Website** | [https://www.audiobookshelf.org/](https://www.audiobookshelf.org/) |
 
@@ -34,7 +34,7 @@ Before deploying, ensure your host environment is ready. See the [Quick Start Gu
 ```yaml
 services:
   audiobookshelf:
-    image: localhost/audiobookshelf:latest
+    image: ghcr.io/daemonless/audiobookshelf:latest
     container_name: audiobookshelf
     environment:
       - PUID=1000
@@ -49,6 +49,56 @@ services:
     restart: unless-stopped
 ```
 
+### AppJail Director
+
+**.env**:
+
+```
+DIRECTOR_PROJECT=audiobookshelf
+PUID=1000
+PGID=1000
+TZ=UTC
+```
+
+**appjail-director.yml**:
+
+```yaml
+options:
+  - virtualnet: ':<random> default'
+  - nat:
+services:
+  audiobookshelf:
+    name: audiobookshelf
+    options:
+      - container: 'boot args:--pull'
+    oci:
+      user: root
+      environment:
+        - PUID: !ENV '${PUID}'
+        - PGID: !ENV '${PGID}'
+        - TZ: !ENV '${TZ}'
+    volumes:
+      - audiobookshelf: /config
+      - audiobookshelf_metadata: /metadata
+      - audiobookshelf_audiobooks: /audiobooks
+volumes:
+  audiobookshelf:
+    device: '/path/to/containers/audiobookshelf'
+  audiobookshelf_metadata:
+    device: '/path/to/containers/audiobookshelf/metadata'
+  audiobookshelf_audiobooks:
+    device: '/path/to/containers/audiobookshelf/audiobooks'
+```
+
+**Makejail**:
+
+```
+ARG tag=latest
+
+OPTION overwrite=force
+OPTION from=ghcr.io/daemonless/audiobookshelf:${tag}
+```
+
 ### Podman CLI
 
 ```bash
@@ -60,7 +110,7 @@ podman run -d --name audiobookshelf \
   -v /path/to/containers/audiobookshelf:/config \
   -v /path/to/containers/audiobookshelf/metadata:/metadata \
   -v /path/to/containers/audiobookshelf/audiobooks:/audiobooks \
-  localhost/audiobookshelf:latest
+  ghcr.io/daemonless/audiobookshelf:latest
 ```
 
 ### Ansible
@@ -69,7 +119,7 @@ podman run -d --name audiobookshelf \
 - name: Deploy audiobookshelf
   containers.podman.podman_container:
     name: audiobookshelf
-    image: localhost/audiobookshelf:latest
+    image: ghcr.io/daemonless/audiobookshelf:latest
     state: started
     restart_policy: always
     env:
@@ -114,3 +164,6 @@ Access at: `http://localhost:13378`
 **User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
 **Base:** FreeBSD 15.0
 
+---
+
+Need help? Join our [Discord](https://discord.gg/Kb9tkhecZT) community.
