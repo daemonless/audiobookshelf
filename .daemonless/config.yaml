@@ -1,0 +1,12 @@
+icon: ':material-headphones:'
+
+cit:
+  mode: screenshot
+  port: 13378
+  ready: "Listening on port"
+
+build:
+  variants:
+    - tag: latest
+      containerfile: Containerfile
+      default: true

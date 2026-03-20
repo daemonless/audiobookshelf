@@ -1,0 +1,171 @@
+# syntax=docker/dockerfile:1
+# Audiobookshelf - Self-hosted audiobook and podcast server
+# Three build stages: nunicode-sqlite, client (Nuxt), server (Node.js)
+
+ARG BASE_VERSION=15
+ARG NUSQLITE3_DIR="/usr/local/lib/nusqlite3"
+# sqlite3_load_extension appends .so automatically — omit it here
+ARG NUSQLITE3_PATH="${NUSQLITE3_DIR}/libnusqlite3"
+
+### STAGE 0: Build libnusqlite3.so from source ###
+FROM ghcr.io/daemonless/base:${BASE_VERSION} AS build-nusqlite3
+
+RUN pkg update && pkg install -y \
+    cmake gmake git \
+    FreeBSD-clang FreeBSD-lld FreeBSD-toolchain FreeBSD-clibs-dev \
+    ca_root_nss \
+    && pkg clean -ay
+
+RUN ln -sf /usr/bin/clang /usr/bin/cc && \
+    ln -sf /usr/bin/clang++ /usr/bin/c++
+
+# nunicode-sqlite is a CMake wrapper around the upstream nunicode library.
+# Build process mirrors the upstream GitHub Actions workflow:
+#   1. Clone nunicode (Bitbucket, tag 1.11) - provides libnu/, unicode.org/, sqlite3/ source
+#   2. Clone nunicode-sqlite (GitHub) - provides CMakeLists.txt + cmake/ toolchain files
+#   3. Overlay cmake files onto nunicode, copy sqlite3 headers, build
+RUN NUSQLITE3_VERSION=$(fetch -qo - "https://api.github.com/repos/mikiher/nunicode-sqlite/releases/latest" | jq -r '.tag_name') && \
+    echo "Building nunicode-sqlite ${NUSQLITE3_VERSION}" && \
+    git clone --depth=1 --branch=1.11 \
+        https://bitbucket.org/alekseyt/nunicode.git /build/nunicode && \
+    git clone --depth=1 --branch=${NUSQLITE3_VERSION} \
+        https://github.com/mikiher/nunicode-sqlite.git /build/nunicode-sqlite && \
+    cp /build/nunicode-sqlite/cmake/* /build/nunicode/cmake/ && \
+    cp /build/nunicode-sqlite/CMakeLists.txt /build/nunicode/ && \
+    mkdir -p /build/nunicode/include && \
+    pkg install -y sqlite3 2>/dev/null && \
+    cp /usr/local/include/sqlite3*.h /build/nunicode/include/
+
+WORKDIR /build/nunicode/staging
+RUN mkdir -p build_freebsd && cd build_freebsd && \
+    cmake ../.. \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_C_COMPILER=/usr/bin/clang \
+        -DCMAKE_MAKE_PROGRAM=/usr/local/bin/gmake \
+        -G "Unix Makefiles" && \
+    gmake nusqlite3
+
+### STAGE 1: Build client (Nuxt/Vue) ###
+FROM ghcr.io/daemonless/base:${BASE_VERSION} AS build-client
+
+RUN pkg update && pkg install -y \
+    node20 npm-node20 \
+    ca_root_nss \
+    && pkg clean -ay
+
+ENV PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
+ENV NODE_OPTIONS="--max-old-space-size=2048"
+
+RUN ABS_VERSION=$(fetch -qo - "https://api.github.com/repos/advplyr/audiobookshelf/releases/latest" | jq -r '.tag_name') && \
+    echo "Building audiobookshelf ${ABS_VERSION}" && \
+    mkdir -p /build/abs /app && \
+    fetch -qo - "https://github.com/advplyr/audiobookshelf/archive/refs/tags/${ABS_VERSION}.tar.gz" | \
+    tar xzf - -C /build/abs --strip-components=1 && \
+    echo "${ABS_VERSION#v}" > /app/version
+
+WORKDIR /build/abs/client
+RUN npm ci && npm run generate
+
+### STAGE 2: Build server (Node.js + native sqlite3) ###
+FROM ghcr.io/daemonless/base:${BASE_VERSION} AS build-server
+
+RUN pkg update && pkg install -y \
+    node20 npm-node20 python311 \
+    gmake pkgconf sqlite3 \
+    FreeBSD-clang FreeBSD-lld FreeBSD-toolchain FreeBSD-clibs-dev FreeBSD-runtime-dev \
+    ca_root_nss \
+    && pkg clean -ay
+
+RUN ln -sf /usr/bin/clang /usr/bin/cc && \
+    ln -sf /usr/bin/clang++ /usr/bin/c++
+
+ENV PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
+ENV NODE_OPTIONS="--max-old-space-size=2048"
+
+RUN ABS_VERSION=$(fetch -qo - "https://api.github.com/repos/advplyr/audiobookshelf/releases/latest" | jq -r '.tag_name') && \
+    mkdir -p /build/abs && \
+    fetch -qo - "https://github.com/advplyr/audiobookshelf/archive/refs/tags/${ABS_VERSION}.tar.gz" | \
+    tar xzf - -C /build/abs --strip-components=1
+
+WORKDIR /build/abs
+RUN npm install --omit=dev --omit=optional --ignore-scripts && \
+    npm rebuild sqlite3
+
+### STAGE 3: Runtime image ###
+FROM ghcr.io/daemonless/base:${BASE_VERSION}
+
+ARG NUSQLITE3_DIR
+ARG NUSQLITE3_PATH
+ARG FREEBSD_ARCH=amd64
+ARG PACKAGES="node20 ffmpeg sqlite3"
+ARG UPSTREAM_URL="https://api.github.com/repos/advplyr/audiobookshelf/releases/latest"
+ARG UPSTREAM_JQ=".tag_name"
+{%- if ports %}
+ARG HEALTHCHECK_ENDPOINT="http://localhost:{{ ports[0].port }}/"
+{%- else %}
+ARG HEALTHCHECK_ENDPOINT="http://localhost:80/"
+{%- endif %}
+
+ENV HEALTHCHECK_URL="${HEALTHCHECK_ENDPOINT}"
+ENV NODE_ENV=production
+ENV PORT=13378
+ENV CONFIG_PATH=/config
+ENV METADATA_PATH=/metadata
+ENV SOURCE=docker
+ENV NUSQLITE3_DIR=${NUSQLITE3_DIR}
+ENV NUSQLITE3_PATH=${NUSQLITE3_PATH}
+
+# --- Metadata (Injected by Generator) ---
+LABEL org.opencontainers.image.title="{{ title }}" \
+      org.opencontainers.image.description="{{ description }}" \
+      org.opencontainers.image.source="{{ repo_url }}" \
+      org.opencontainers.image.url="{{ web_url }}" \
+      org.opencontainers.image.licenses="GPL-3.0" \
+      org.opencontainers.image.vendor="daemonless" \
+      org.opencontainers.image.authors="daemonless" \
+      io.daemonless.category="{{ category }}" \
+{%- if ports %}
+      io.daemonless.port="{{ ports[0].port }}" \
+{%- endif %}
+{%- if volumes %}
+      io.daemonless.volumes="{{ volumes | map(attribute='path') | join(',') }}" \
+{%- endif %}
+      io.daemonless.upstream-mode="source" \
+      io.daemonless.arch="${FREEBSD_ARCH}" \
+      io.daemonless.upstream-url="${UPSTREAM_URL}" \
+      io.daemonless.upstream-jq="${UPSTREAM_JQ}" \
+      io.daemonless.healthcheck-url="${HEALTHCHECK_ENDPOINT}" \
+      io.daemonless.packages="${PACKAGES}"
+
+RUN pkg update && \
+    pkg install -y ${PACKAGES} && \
+    pkg clean -ay && \
+    rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
+
+# nunicode-sqlite
+RUN mkdir -p ${NUSQLITE3_DIR} && chmod 755 ${NUSQLITE3_DIR}
+COPY --from=build-nusqlite3 /build/nunicode/staging/build_freebsd/sqlite3/libnusqlite3.so ${NUSQLITE3_DIR}/libnusqlite3.so
+RUN chmod 755 ${NUSQLITE3_DIR}/libnusqlite3.so
+
+# Application
+WORKDIR /app
+COPY --from=build-server --chown=bsd:bsd /build/abs/index.js /build/abs/package.json /app/
+COPY --from=build-server --chown=bsd:bsd /build/abs/server /app/server
+COPY --from=build-server --chown=bsd:bsd /build/abs/node_modules /app/node_modules
+COPY --from=build-client --chown=bsd:bsd /build/abs/client/dist /app/client/dist
+COPY --from=build-client --chown=bsd:bsd /app/version /app/version
+
+RUN mkdir -p /config /metadata && chown bsd:bsd /config /metadata /app
+
+COPY root/ /
+RUN chmod +x /etc/services.d/audiobookshelf/run
+
+# --- Expose (Injected by Generator) ---
+{%- if ports %}
+EXPOSE {{ ports | map(attribute='port') | join(' ') }}
+{%- endif %}
+
+# --- Volumes (Injected by Generator) ---
+{%- if volumes %}
+VOLUME {{ volumes | map(attribute='path') | join(' ') }}
+{%- endif %}

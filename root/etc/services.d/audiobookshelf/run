@@ -1,0 +1,14 @@
+#!/bin/sh
+# Audiobookshelf s6 service
+
+export HOME=/config
+export NODE_ENV=production
+export PORT="${PORT:-13378}"
+export CONFIG_PATH=/config
+export METADATA_PATH=/metadata
+export SOURCE=docker
+export NUSQLITE3_DIR=/usr/local/lib/nusqlite3
+export NUSQLITE3_PATH=/usr/local/lib/nusqlite3/libnusqlite3
+
+cd /app
+exec /usr/local/bin/s6-setuidgid bsd /usr/local/bin/node index.js
