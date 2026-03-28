@@ -3,7 +3,7 @@ name: audiobookshelf
 x-daemonless:
   title: "Audiobookshelf"
   icon: ":material-headphones:"
-  category: "Media"
+  category: "Media Servers"
   description: "Self-hosted audiobook and podcast server."
   upstream_url: "https://github.com/advplyr/audiobookshelf"
   web_url: "https://www.audiobookshelf.org/"
