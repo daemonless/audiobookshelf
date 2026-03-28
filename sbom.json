@@ -1,12 +1,12 @@
 {
   "image": "audiobookshelf",
-  "generated": "2026-03-28T10:55:27Z",
+  "generated": "2026-03-28T16:42:54Z",
   "tags": {
     "latest": {
       "arch": "amd64",
       "app_version": "2.33.1",
       "source": "upstream",
-      "generated": "2026-03-28T10:55:10Z",
+      "generated": "2026-03-28T16:35:10Z",
       "packages": {
         "freebsd": [
           {
