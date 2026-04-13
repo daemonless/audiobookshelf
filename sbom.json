@@ -1,13 +1,13 @@
 {
+  "generated": "2026-04-13T18:03:55Z",
   "image": "audiobookshelf",
-  "generated": "2026-03-28T16:42:54Z",
   "tags": {
     "latest": {
-      "arch": "amd64",
       "app_version": "2.33.1",
-      "source": "upstream",
-      "generated": "2026-03-28T16:35:10Z",
+      "arch": "amd64",
+      "generated": "2026-04-13T18:02:29Z",
       "packages": {
+        "dotnet": [],
         "freebsd": [
           {
             "name": "FreeBSD-audit-lib",
@@ -139,7 +139,7 @@
           },
           {
             "name": "aom",
-            "version": "3.13.2"
+            "version": "3.13.3"
           },
           {
             "name": "bash",
@@ -171,11 +171,11 @@
           },
           {
             "name": "corepack",
-            "version": "0.34.5"
+            "version": "0.34.6"
           },
           {
             "name": "dav1d",
-            "version": "1.5.3"
+            "version": "1.5.3_1"
           },
           {
             "name": "execline",
@@ -183,11 +183,11 @@
           },
           {
             "name": "expat",
-            "version": "2.7.4"
+            "version": "2.7.5"
           },
           {
             "name": "ffmpeg",
-            "version": "8.0.1_1,1"
+            "version": "8.1,1"
           },
           {
             "name": "fontconfig",
@@ -195,7 +195,7 @@
           },
           {
             "name": "freetype2",
-            "version": "2.14.1"
+            "version": "2.14.3"
           },
           {
             "name": "fribidi",
@@ -211,7 +211,7 @@
           },
           {
             "name": "gettext-runtime",
-            "version": "0.26"
+            "version": "1.0"
           },
           {
             "name": "giflib",
@@ -235,7 +235,7 @@
           },
           {
             "name": "harfbuzz",
-            "version": "12.3.0"
+            "version": "13.2.1"
           },
           {
             "name": "highway",
@@ -243,7 +243,7 @@
           },
           {
             "name": "hwdata",
-            "version": "0.403,1"
+            "version": "0.405,1"
           },
           {
             "name": "icu",
@@ -271,7 +271,7 @@
           },
           {
             "name": "lcms2",
-            "version": "2.17"
+            "version": "2.18"
           },
           {
             "name": "lerc",
@@ -279,7 +279,7 @@
           },
           {
             "name": "libX11",
-            "version": "1.8.12,1"
+            "version": "1.8.13,1"
           },
           {
             "name": "libXau",
@@ -319,7 +319,7 @@
           },
           {
             "name": "libbluray",
-            "version": "1.4.0,1"
+            "version": "1.4.1,1"
           },
           {
             "name": "libdatrie",
@@ -375,11 +375,11 @@
           },
           {
             "name": "libnghttp3",
-            "version": "1.14.0"
+            "version": "1.15.0"
           },
           {
             "name": "libngtcp2",
-            "version": "1.19.0"
+            "version": "1.21.0"
           },
           {
             "name": "libogg",
@@ -391,11 +391,11 @@
           },
           {
             "name": "libplacebo",
-            "version": "7.351.0_1"
+            "version": "7.360.1"
           },
           {
             "name": "librsvg2-rust",
-            "version": "2.61.3"
+            "version": "2.62.0_1"
           },
           {
             "name": "libtasn1",
@@ -419,7 +419,7 @@
           },
           {
             "name": "libunistring",
-            "version": "1.4.1"
+            "version": "1.4.2"
           },
           {
             "name": "libunwind",
@@ -427,7 +427,7 @@
           },
           {
             "name": "libuv",
-            "version": "1.51.0"
+            "version": "1.52.0"
           },
           {
             "name": "libv4l",
@@ -447,7 +447,7 @@
           },
           {
             "name": "libvpx",
-            "version": "1.15.2"
+            "version": "1.16.0"
           },
           {
             "name": "libx264",
@@ -463,7 +463,7 @@
           },
           {
             "name": "llhttp",
-            "version": "9.3.0"
+            "version": "9.3.1"
           },
           {
             "name": "lzo2",
@@ -471,7 +471,7 @@
           },
           {
             "name": "mpc",
-            "version": "1.3.1_1"
+            "version": "1.4.0"
           },
           {
             "name": "mpdecimal",
@@ -487,7 +487,7 @@
           },
           {
             "name": "node20",
-            "version": "20.20.0"
+            "version": "20.20.2"
           },
           {
             "name": "oniguruma",
@@ -499,15 +499,15 @@
           },
           {
             "name": "openexr",
-            "version": "3.4.5"
+            "version": "3.4.9"
           },
           {
             "name": "openjph",
-            "version": "0.25.3"
+            "version": "0.26.3"
           },
           {
             "name": "opus",
-            "version": "1.6"
+            "version": "1.6.1"
           },
           {
             "name": "p11-kit",
@@ -515,7 +515,7 @@
           },
           {
             "name": "pango",
-            "version": "1.56.4"
+            "version": "1.56.4_1"
           },
           {
             "name": "pcre2",
@@ -527,11 +527,11 @@
           },
           {
             "name": "pkg",
-            "version": "2.5.1"
+            "version": "2.6.2_1"
           },
           {
             "name": "png",
-            "version": "1.6.53"
+            "version": "1.6.55"
           },
           {
             "name": "py311-boost-libs",
@@ -539,15 +539,15 @@
           },
           {
             "name": "py311-numpy",
-            "version": "1.26.4_11,1"
+            "version": "1.26.4_12,1"
           },
           {
             "name": "py311-packaging",
-            "version": "25.0"
+            "version": "26.0"
           },
           {
             "name": "python311",
-            "version": "3.11.15"
+            "version": "3.11.15_1"
           },
           {
             "name": "readline",
@@ -558,12 +558,8 @@
             "version": "2.13.2.0"
           },
           {
-            "name": "s6-rc",
-            "version": "0.5.6.0"
-          },
-          {
             "name": "shaderc",
-            "version": "2025.5_1"
+            "version": "2026.1"
           },
           {
             "name": "shared-mime-info",
@@ -571,7 +567,7 @@
           },
           {
             "name": "simdjson",
-            "version": "4.2.4"
+            "version": "4.5.0"
           },
           {
             "name": "skalibs",
@@ -607,7 +603,7 @@
           },
           {
             "name": "suitesparse-config",
-            "version": "7.12.1"
+            "version": "7.12.2"
           },
           {
             "name": "suitesparse-umfpack",
@@ -615,7 +611,7 @@
           },
           {
             "name": "svt-av1",
-            "version": "3.1.2"
+            "version": "4.1.0"
           },
           {
             "name": "tiff",
@@ -654,7 +650,6 @@
             "version": "1.5.7_1"
           }
         ],
-        "dotnet": [],
         "go": [],
         "java": [],
         "node": [
@@ -780,7 +775,7 @@
           },
           {
             "name": "corepack",
-            "version": "0.34.5"
+            "version": "0.34.6"
           },
           {
             "name": "cors",
@@ -1387,15 +1382,16 @@
           },
           {
             "name": "packaging",
-            "version": "25.0"
+            "version": "26.0"
           }
         ],
         "ruby": [],
         "rust": []
       },
+      "source": "upstream",
       "summary": {
-        "freebsd": 161,
         "dotnet": 0,
+        "freebsd": 160,
         "go": 0,
         "java": 0,
         "node": 179,
@@ -1403,7 +1399,7 @@
         "python": 3,
         "ruby": 0,
         "rust": 0,
-        "total": 343
+        "total": 342
       }
     }
   }
