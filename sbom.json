@@ -1,11 +1,11 @@
 {
-  "generated": "2026-04-19T23:29:48Z",
+  "generated": "2026-04-27T22:51:01Z",
   "image": "audiobookshelf",
   "tags": {
     "latest": {
-      "app_version": "2.33.2",
+      "app_version": "2.34.0",
       "arch": "amd64",
-      "generated": "2026-04-19T23:28:33Z",
+      "generated": "2026-04-27T22:49:40Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -87,11 +87,11 @@
           },
           {
             "name": "FreeBSD-openssl",
-            "version": "15.0"
+            "version": "15.0p2"
           },
           {
             "name": "FreeBSD-openssl-lib",
-            "version": "15.0"
+            "version": "15.0p2"
           },
           {
             "name": "FreeBSD-pkg-bootstrap",
@@ -103,7 +103,7 @@
           },
           {
             "name": "FreeBSD-runtime",
-            "version": "15.0"
+            "version": "15.0p6"
           },
           {
             "name": "FreeBSD-tcpd",
@@ -371,7 +371,7 @@
           },
           {
             "name": "libnghttp2",
-            "version": "1.68.0"
+            "version": "1.68.1"
           },
           {
             "name": "libnghttp3",
@@ -379,7 +379,7 @@
           },
           {
             "name": "libngtcp2",
-            "version": "1.21.0"
+            "version": "1.22.1"
           },
           {
             "name": "libogg",
@@ -699,7 +699,7 @@
           },
           {
             "name": "audiobookshelf",
-            "version": "2.33.2"
+            "version": "2.34.0"
           },
           {
             "name": "axios",
