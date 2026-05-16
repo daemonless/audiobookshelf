@@ -1,11 +1,11 @@
 {
-  "generated": "2026-05-06T23:23:06Z",
+  "generated": "2026-05-16T22:09:08Z",
   "image": "audiobookshelf",
   "tags": {
     "latest": {
       "app_version": "2.34.0",
       "arch": "amd64",
-      "generated": "2026-05-06T23:21:40Z",
+      "generated": "2026-05-16T22:07:47Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -163,7 +163,7 @@
           },
           {
             "name": "ca_root_nss",
-            "version": "3.117_2"
+            "version": "3.123.1"
           },
           {
             "name": "cairo",
@@ -183,7 +183,7 @@
           },
           {
             "name": "expat",
-            "version": "2.7.5"
+            "version": "2.8.1"
           },
           {
             "name": "ffmpeg",
@@ -499,7 +499,7 @@
           },
           {
             "name": "openexr",
-            "version": "3.4.9"
+            "version": "3.4.11"
           },
           {
             "name": "openjph",
