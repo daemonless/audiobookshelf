@@ -1,11 +1,11 @@
 {
-  "generated": "2026-05-16T22:09:08Z",
+  "generated": "2026-05-17T23:27:59Z",
   "image": "audiobookshelf",
   "tags": {
     "latest": {
-      "app_version": "2.34.0",
+      "app_version": "2.35.0",
       "arch": "amd64",
-      "generated": "2026-05-16T22:07:47Z",
+      "generated": "2026-05-17T23:26:41Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -699,7 +699,7 @@
           },
           {
             "name": "audiobookshelf",
-            "version": "2.34.0"
+            "version": "2.35.0"
           },
           {
             "name": "axios",
