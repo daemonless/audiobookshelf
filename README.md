@@ -10,7 +10,6 @@ Source: dbuild templates
 
 Self-hosted audiobook and podcast server.
 
-
 | | |
 |---|---|
 | **Port** | 13378 |
@@ -19,13 +18,11 @@ Self-hosted audiobook and podcast server.
 | **Website** | [https://www.audiobookshelf.org/](https://www.audiobookshelf.org/) |
 
 ## Version Tags
-
 | Tag | Description | Best For |
 | :--- | :--- | :--- |
 | `latest` | **Upstream Binary**. Built from official release. | Most users. Matches Linux Docker behavior. |
 
 ## Prerequisites
-
 Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
 
 ## Deployment
@@ -35,26 +32,27 @@ Before deploying, ensure your host environment is ready. See the [Quick Start Gu
 ```yaml
 services:
   audiobookshelf:
-    image: ghcr.io/daemonless/audiobookshelf:latest
+    image: "ghcr.io/daemonless/audiobookshelf:latest"
     container_name: audiobookshelf
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=UTC
+      - PUID=1000  # User ID for the application process
+      - PGID=1000  # Group ID for the application process
+      - TZ=UTC  # Timezone for the container
     volumes:
       - "/path/to/containers/audiobookshelf:/config"
       - "/path/to/containers/audiobookshelf/metadata:/metadata"
       - "/path/to/containers/audiobookshelf/audiobooks:/audiobooks"
     ports:
-      - 13378:13378
+      - "13378:13378"
     restart: unless-stopped
 ```
 
 ### AppJail Director
-
 **.env**:
 
 ```
+# .env
+
 DIRECTOR_PROJECT=audiobookshelf
 PUID=1000
 PGID=1000
@@ -64,6 +62,8 @@ TZ=UTC
 **appjail-director.yml**:
 
 ```yaml
+# appjail-director.yml
+
 options:
   - virtualnet: ':<random> default'
   - nat:
@@ -72,6 +72,7 @@ services:
     name: audiobookshelf
     options:
       - container: 'boot args:--pull'
+      - expose: '13378:13378 proto:tcp' \
     oci:
       user: root
       environment:
@@ -94,11 +95,14 @@ volumes:
 **Makejail**:
 
 ```
+# Makejail
+
 ARG tag=latest
 
 OPTION overwrite=force
 OPTION from=ghcr.io/daemonless/audiobookshelf:${tag}
 ```
+**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
 
 ### Podman CLI
 
@@ -114,13 +118,32 @@ podman run -d --name audiobookshelf \
   ghcr.io/daemonless/audiobookshelf:latest
 ```
 
+### AppJail
+
+```bash
+appjail oci run -Pd \
+  -o overwrite=force \
+  -o container="args:--pull" \
+  -o virtualnet=":<random> default" \
+  -o nat \
+  -o expose="13378:13378 proto:tcp" \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=UTC \
+  -o fstab="/path/to/containers/audiobookshelf /config <pseudofs>" \
+  -o fstab="/path/to/containers/audiobookshelf/metadata /metadata <pseudofs>" \
+  -o fstab="/path/to/containers/audiobookshelf/audiobooks /audiobooks <pseudofs>" \
+  ghcr.io/daemonless/audiobookshelf:latest audiobookshelf
+```
+**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
+
 ### Ansible
 
 ```yaml
 - name: Deploy audiobookshelf
   containers.podman.podman_container:
     name: audiobookshelf
-    image: ghcr.io/daemonless/audiobookshelf:latest
+    image: "ghcr.io/daemonless/audiobookshelf:latest"
     state: started
     restart_policy: always
     env:
@@ -163,7 +186,7 @@ Access at: `http://localhost:13378`
 
 **Architectures:** amd64
 **User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
-**Base:** FreeBSD 15.0
+**Base:** FreeBSD 15.1
 
 ---
 
