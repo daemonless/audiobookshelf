@@ -76,7 +76,7 @@ RUN npm ci && npm run generate
 FROM ghcr.io/daemonless/base:${BASE_VERSION} AS build-server
 
 RUN pkg update && pkg install -y \
-    node20 npm-node20 python311 \
+    node20 npm-node20 python312 \
     gmake pkgconf sqlite3 \
     FreeBSD-clang FreeBSD-lld FreeBSD-toolchain FreeBSD-clibs-dev FreeBSD-runtime-dev \
     ca_root_nss \
