@@ -155,7 +155,9 @@ COPY --from=build-server --chown=bsd:bsd /build/abs/node_modules /app/node_modul
 COPY --from=build-client --chown=bsd:bsd /build/abs/client/dist /app/client/dist
 COPY --from=build-client --chown=bsd:bsd /app/version /app/version
 
-RUN mkdir -p /config /metadata && chown bsd:bsd /config /metadata /app
+# npm's build-time perms leave /app files 600/700; a+rX makes them readable at any PUID
+RUN mkdir -p /config /metadata && chown bsd:bsd /config /metadata /app && \
+    chmod -R a+rX /app
 
 COPY root/ /
 RUN chmod +x /etc/services.d/audiobookshelf/run
