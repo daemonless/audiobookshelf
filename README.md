@@ -72,7 +72,7 @@ services:
     name: audiobookshelf
     options:
       - container: 'boot args:--pull'
-      - expose: '13378:13378 proto:tcp' \
+      - expose: '13378:13378 proto:tcp'
     oci:
       user: root
       environment:
