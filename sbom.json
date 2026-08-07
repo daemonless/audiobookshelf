@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-01T20:03:21Z",
+  "generated": "2026-08-07T18:36:46Z",
   "image": "audiobookshelf",
   "tags": {
     "latest": {
       "app_version": "2.36.0",
       "arch": "amd64",
-      "generated": "2026-08-01T19:50:43Z",
+      "generated": "2026-08-07T18:34:08Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1036,7 +1036,7 @@
               "APACHE20"
             ],
             "name": "simdjson",
-            "version": "4.6.4"
+            "version": "4.6.6"
           },
           {
             "licenses": [
