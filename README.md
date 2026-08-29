@@ -44,8 +44,11 @@ services:
       - "/path/to/containers/audiobookshelf/audiobooks:/audiobooks"
     ports:
       - "13378:13378"
-    restart: unless-stopped
+    # always (not unless-stopped) so FreeBSD's podman rc.d auto-starts it at boot
+    restart: always
 ```
+
+Save as `compose.yaml`, then run `podman-compose up -d`.
 
 ### AppJail Director
 **.env**:
@@ -102,6 +105,9 @@ ARG tag=latest
 OPTION overwrite=force
 OPTION from=ghcr.io/daemonless/audiobookshelf:${tag}
 ```
+
+Save the files above, then run `appjail-director up`.
+
 **Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
 
 ### Podman CLI
@@ -117,6 +123,8 @@ podman run -d --name audiobookshelf \
   -v /path/to/containers/audiobookshelf/audiobooks:/audiobooks \
   ghcr.io/daemonless/audiobookshelf:latest
 ```
+
+Save as `run.sh`, then run `sh run.sh`.
 
 ### AppJail
 
@@ -135,7 +143,38 @@ appjail oci run -Pd \
   -o fstab="/path/to/containers/audiobookshelf/audiobooks /audiobooks <pseudofs>" \
   ghcr.io/daemonless/audiobookshelf:latest audiobookshelf
 ```
+
+Save as `run.sh`, then run `sh run.sh`.
+
 **Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
+
+### Bastille
+
+> [!WARNING]
+> Bastille's OCI support is **experimental**. It requires `buildah`, shares the host network stack (`inherit`), and persists image-declared volumes under `--data-path`.
+
+```yaml
+services:
+  audiobookshelf:
+    image: "ghcr.io/daemonless/audiobookshelf:latest"
+    container_name: audiobookshelf
+    network_mode: host  # jail shares host networking
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+```
+
+Save as `podman-compose.yml`, then run `bastille up`. Or via CLI:
+
+```bash
+bastille create -O \
+  --env PUID=1000 \
+  --env PGID=1000 \
+  --env TZ=UTC \
+  --data-path /path/to/containers/audiobookshelf \
+  audiobookshelf ghcr.io/daemonless/audiobookshelf:latest inherit
+```
 
 ### Ansible
 
@@ -157,6 +196,8 @@ appjail oci run -Pd \
       - "/path/to/containers/audiobookshelf/metadata:/metadata"
       - "/path/to/containers/audiobookshelf/audiobooks:/audiobooks"
 ```
+
+Save as `audiobookshelf-deploy.yaml`, then run `ansible-playbook audiobookshelf-deploy.yaml`.
 
 Access at: `http://localhost:13378`
 

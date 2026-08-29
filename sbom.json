@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-16T11:04:13Z",
+  "generated": "2026-08-29T22:11:56Z",
   "image": "audiobookshelf",
   "tags": {
     "latest": {
       "app_version": "2.36.0",
       "arch": "amd64",
-      "generated": "2026-08-16T11:02:31Z",
+      "generated": "2026-08-29T22:10:23Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -161,7 +161,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-openssl-lib",
-            "version": "15.1"
+            "version": "15.1p3"
           },
           {
             "licenses": [
@@ -189,7 +189,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-runtime",
-            "version": "15.1p2"
+            "version": "15.1p3"
           },
           {
             "licenses": [
@@ -302,7 +302,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.125"
+            "version": "3.127"
           },
           {
             "licenses": [
@@ -915,7 +915,7 @@
               "BSD3CLAUSE"
             ],
             "name": "openexr",
-            "version": "3.4.13_1"
+            "version": "3.4.15"
           },
           {
             "licenses": [
@@ -1000,7 +1000,7 @@
               "PSFL"
             ],
             "name": "python312",
-            "version": "3.12.13_4"
+            "version": "3.12.14"
           },
           {
             "licenses": [
@@ -1036,7 +1036,7 @@
               "APACHE20"
             ],
             "name": "simdjson",
-            "version": "4.6.6"
+            "version": "4.6.8"
           },
           {
             "licenses": [
