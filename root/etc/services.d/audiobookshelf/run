@@ -7,8 +7,9 @@ export PORT="${PORT:-13378}"
 export CONFIG_PATH=/config
 export METADATA_PATH=/metadata
 export SOURCE=docker
-export NUSQLITE3_DIR=/usr/local/lib/nusqlite3
-export NUSQLITE3_PATH=/usr/local/lib/nusqlite3/libnusqlite3
+# set by the image; libnusqlite3 now comes from the port at /usr/local/lib
+export NUSQLITE3_DIR="${NUSQLITE3_DIR:-/usr/local/lib}"
+export NUSQLITE3_PATH="${NUSQLITE3_PATH:-${NUSQLITE3_DIR}/libnusqlite3}"
 
 cd /app
 exec /usr/local/bin/s6-setuidgid bsd /usr/local/bin/node index.js
