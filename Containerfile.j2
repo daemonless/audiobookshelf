@@ -1,49 +1,12 @@
 # syntax=docker/dockerfile:1
 # Audiobookshelf - Self-hosted audiobook and podcast server
-# Three build stages: nunicode-sqlite, client (Nuxt), server (Node.js)
+# Two build stages: client (Nuxt), server (Node.js)
 
-ARG BASE_VERSION=15.1
-ARG NUSQLITE3_DIR="/usr/local/lib/nusqlite3"
+# 15.1-latest: libnusqlite3 is only packaged in the latest branch
+ARG BASE_VERSION=15.1-latest
+ARG NUSQLITE3_DIR="/usr/local/lib"
 # sqlite3_load_extension appends .so automatically — omit it here
 ARG NUSQLITE3_PATH="${NUSQLITE3_DIR}/libnusqlite3"
-
-### STAGE 0: Build libnusqlite3.so from source ###
-FROM ghcr.io/daemonless/base:${BASE_VERSION} AS build-nusqlite3
-
-RUN pkg update && pkg install -y \
-    cmake gmake git \
-    FreeBSD-clang FreeBSD-lld FreeBSD-toolchain FreeBSD-clibs-dev \
-    ca_root_nss \
-    && pkg clean -ay
-
-RUN ln -sf /usr/bin/clang /usr/bin/cc && \
-    ln -sf /usr/bin/clang++ /usr/bin/c++
-
-# nunicode-sqlite is a CMake wrapper around the upstream nunicode library.
-# Build process mirrors the upstream GitHub Actions workflow:
-#   1. Clone nunicode (Bitbucket, tag 1.11) - provides libnu/, unicode.org/, sqlite3/ source
-#   2. Clone nunicode-sqlite (GitHub) - provides CMakeLists.txt + cmake/ toolchain files
-#   3. Overlay cmake files onto nunicode, copy sqlite3 headers, build
-RUN NUSQLITE3_VERSION=$(fetch -qo - "https://api.github.com/repos/mikiher/nunicode-sqlite/releases/latest" | jq -r '.tag_name') && \
-    echo "Building nunicode-sqlite ${NUSQLITE3_VERSION}" && \
-    git clone --depth=1 --branch=1.11 \
-        https://bitbucket.org/alekseyt/nunicode.git /build/nunicode && \
-    git clone --depth=1 --branch=${NUSQLITE3_VERSION} \
-        https://github.com/mikiher/nunicode-sqlite.git /build/nunicode-sqlite && \
-    cp /build/nunicode-sqlite/cmake/* /build/nunicode/cmake/ && \
-    cp /build/nunicode-sqlite/CMakeLists.txt /build/nunicode/ && \
-    mkdir -p /build/nunicode/include && \
-    pkg install -y sqlite3 2>/dev/null && \
-    cp /usr/local/include/sqlite3*.h /build/nunicode/include/
-
-WORKDIR /build/nunicode/staging
-RUN mkdir -p build_freebsd && cd build_freebsd && \
-    cmake ../.. \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_C_COMPILER=/usr/bin/clang \
-        -DCMAKE_MAKE_PROGRAM=/usr/local/bin/gmake \
-        -G "Unix Makefiles" && \
-    gmake nusqlite3
 
 ### STAGE 1: Build client (Nuxt/Vue) ###
 FROM ghcr.io/daemonless/base:${BASE_VERSION} AS build-client
@@ -97,7 +60,7 @@ FROM ghcr.io/daemonless/base:${BASE_VERSION}
 ARG NUSQLITE3_DIR
 ARG NUSQLITE3_PATH
 ARG FREEBSD_ARCH=amd64
-ARG PACKAGES="node20 ffmpeg sqlite3"
+ARG PACKAGES="node20 ffmpeg sqlite3 libnusqlite3"
 ARG UPSTREAM_URL="https://api.github.com/repos/advplyr/audiobookshelf/releases/latest"
 ARG UPSTREAM_JQ=".tag_name"
 {%- if ports %}
@@ -141,11 +104,6 @@ RUN pkg update && \
     pkg install -y ${PACKAGES} && \
     pkg clean -ay && \
     rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
-
-# nunicode-sqlite
-RUN mkdir -p ${NUSQLITE3_DIR} && chmod 755 ${NUSQLITE3_DIR}
-COPY --from=build-nusqlite3 /build/nunicode/staging/build_freebsd/sqlite3/libnusqlite3.so ${NUSQLITE3_DIR}/libnusqlite3.so
-RUN chmod 755 ${NUSQLITE3_DIR}/libnusqlite3.so
 
 # Application
 WORKDIR /app
