@@ -7,6 +7,7 @@ Source: dbuild templates
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/daemonless/audiobookshelf/build.yaml?style=flat-square&label=Build&color=green)](https://github.com/daemonless/audiobookshelf/actions)
 [![Last Commit](https://img.shields.io/github/last-commit/daemonless/audiobookshelf?style=flat-square&label=Last+Commit&color=blue)](https://github.com/daemonless/audiobookshelf/commits)
+[![OCI Pulls](https://img.shields.io/docker/pulls/daemonless/audiobookshelf?style=flat-square&label=OCI+Pulls&color=blue)](https://hub.docker.com/r/daemonless/audiobookshelf)
 
 Self-hosted audiobook and podcast server.
 

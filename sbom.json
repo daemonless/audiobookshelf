@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-11T23:40:30Z",
+  "generated": "2026-09-16T17:39:37Z",
   "image": "audiobookshelf",
   "tags": {
     "latest": {
       "app_version": "2.36.0",
       "arch": "amd64",
-      "generated": "2026-09-11T23:38:58Z",
+      "generated": "2026-09-16T17:38:01Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -252,14 +252,14 @@
               "BSD3CLAUSE"
             ],
             "name": "Imath",
-            "version": "3.2.2_4"
+            "version": "3.2.3"
           },
           {
             "licenses": [
               "BSD2CLAUSE"
             ],
             "name": "aom",
-            "version": "3.14.1_1"
+            "version": "3.15.0"
           },
           {
             "licenses": [
@@ -281,7 +281,7 @@
               "BSL"
             ],
             "name": "boost-libs",
-            "version": "1.89.0_2"
+            "version": "1.91.0"
           },
           {
             "licenses": [
@@ -295,14 +295,14 @@
               "MIT"
             ],
             "name": "c-ares",
-            "version": "1.34.6"
+            "version": "1.34.8"
           },
           {
             "licenses": [
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.127"
+            "version": "3.129"
           },
           {
             "licenses": [
@@ -317,7 +317,7 @@
               "MIT"
             ],
             "name": "corepack",
-            "version": "0.35.0"
+            "version": "0.36.0"
           },
           {
             "licenses": [
@@ -338,7 +338,7 @@
               "MIT"
             ],
             "name": "expat",
-            "version": "2.8.2"
+            "version": "2.8.4"
           },
           {
             "licenses": [
@@ -346,7 +346,7 @@
               "LGPL3+"
             ],
             "name": "ffmpeg",
-            "version": "8.1.2_1,1"
+            "version": "9.0.1,1"
           },
           {
             "licenses": [
@@ -376,7 +376,7 @@
               "GPLv3RLE"
             ],
             "name": "gcc14",
-            "version": "14.2.0_6"
+            "version": "14.2.0_7"
           },
           {
             "licenses": [
@@ -398,14 +398,14 @@
               "MIT"
             ],
             "name": "giflib",
-            "version": "5.2.2"
+            "version": "6.1.3"
           },
           {
             "licenses": [
               "LGPL20"
             ],
             "name": "glib",
-            "version": "2.86.4,2"
+            "version": "2.88.3,2"
           },
           {
             "licenses": [
@@ -451,7 +451,7 @@
               "GPLv2+"
             ],
             "name": "hwdata",
-            "version": "0.409,1"
+            "version": "0.411,1"
           },
           {
             "licenses": [
@@ -495,7 +495,7 @@
               "LGPL20+"
             ],
             "name": "lame",
-            "version": "3.100_5"
+            "version": "4.0"
           },
           {
             "licenses": [
@@ -509,7 +509,7 @@
               "APACHE20"
             ],
             "name": "lerc",
-            "version": "4.1.0"
+            "version": "4.2.0"
           },
           {
             "licenses": [
@@ -544,14 +544,14 @@
               "MIT"
             ],
             "name": "libXfixes",
-            "version": "6.0.1"
+            "version": "6.0.2"
           },
           {
             "licenses": [
               "MIT"
             ],
             "name": "libXft",
-            "version": "2.3.8"
+            "version": "2.3.9"
           },
           {
             "licenses": [
@@ -586,7 +586,7 @@
               "LGPL21"
             ],
             "name": "libbluray",
-            "version": "1.4.1,1"
+            "version": "1.5.1,1"
           },
           {
             "licenses": [
@@ -600,14 +600,14 @@
               "MIT"
             ],
             "name": "libdeflate",
-            "version": "1.25"
+            "version": "1.26"
           },
           {
             "licenses": [
               "MIT"
             ],
             "name": "libdrm",
-            "version": "2.4.133,1"
+            "version": "2.4.134,1"
           },
           {
             "licenses": [
@@ -621,7 +621,7 @@
               "GPLv2"
             ],
             "name": "libdvdread",
-            "version": "7.0.0"
+            "version": "7.1.1"
           },
           {
             "licenses": [
@@ -642,7 +642,7 @@
               "MIT"
             ],
             "name": "libffi",
-            "version": "3.6.0"
+            "version": "3.8.0"
           },
           {
             "licenses": [
@@ -686,21 +686,28 @@
               "MIT"
             ],
             "name": "libnghttp2",
-            "version": "1.69.0"
+            "version": "1.70.0"
           },
           {
             "licenses": [
               "MIT"
             ],
             "name": "libnghttp3",
-            "version": "1.17.0"
+            "version": "1.18.0"
           },
           {
             "licenses": [
               "MIT"
             ],
             "name": "libngtcp2",
-            "version": "1.24.0"
+            "version": "1.25.0"
+          },
+          {
+            "licenses": [
+              "MIT"
+            ],
+            "name": "libnusqlite3",
+            "version": "1.12"
           },
           {
             "licenses": [
@@ -728,7 +735,7 @@
               "LGPL20"
             ],
             "name": "librsvg2-rust",
-            "version": "2.62.3"
+            "version": "2.62.3_2"
           },
           {
             "licenses": [
@@ -750,7 +757,7 @@
               "BSD2CLAUSE"
             ],
             "name": "libudev-devd",
-            "version": "0.6.0"
+            "version": "0.7.0"
           },
           {
             "licenses": [
@@ -823,14 +830,14 @@
               "BSD3CLAUSE"
             ],
             "name": "libvpx",
-            "version": "1.16.0"
+            "version": "1.17.0"
           },
           {
             "licenses": [
               "GPLv2"
             ],
             "name": "libx264",
-            "version": "0.164.3095"
+            "version": "0.165.3223_1"
           },
           {
             "licenses": [
@@ -844,14 +851,14 @@
               "MIT"
             ],
             "name": "libxml2",
-            "version": "2.15.3"
+            "version": "2.15.4"
           },
           {
             "licenses": [
               "MIT"
             ],
             "name": "llhttp",
-            "version": "9.4.2"
+            "version": "9.4.3"
           },
           {
             "licenses": [
@@ -883,6 +890,13 @@
           },
           {
             "licenses": [
+              "LGPL21"
+            ],
+            "name": "mpg123",
+            "version": "1.33.7"
+          },
+          {
+            "licenses": [
               "GPLv2+",
               "LGPL3"
             ],
@@ -908,21 +922,21 @@
               "BSD3CLAUSE"
             ],
             "name": "openblas",
-            "version": "0.3.33,2"
+            "version": "0.3.34_1,2"
           },
           {
             "licenses": [
               "BSD3CLAUSE"
             ],
             "name": "openexr",
-            "version": "3.4.15"
+            "version": "3.4.15_1"
           },
           {
             "licenses": [
               "BSD2CLAUSE"
             ],
             "name": "openjph",
-            "version": "0.30.1"
+            "version": "0.31.0"
           },
           {
             "licenses": [
@@ -936,7 +950,7 @@
               "BSD3CLAUSE"
             ],
             "name": "p11-kit",
-            "version": "0.26.2"
+            "version": "0.26.5"
           },
           {
             "licenses": [
@@ -950,7 +964,7 @@
               "BSD3CLAUSE"
             ],
             "name": "pcre2",
-            "version": "10.47_1"
+            "version": "10.48"
           },
           {
             "licenses": [
@@ -964,7 +978,7 @@
               "BSD2CLAUSE"
             ],
             "name": "pkg",
-            "version": "2.7.5"
+            "version": "2.8.4"
           },
           {
             "licenses": [
@@ -978,7 +992,7 @@
               "BSL"
             ],
             "name": "py312-boost-libs",
-            "version": "1.89.0"
+            "version": "1.91.0"
           },
           {
             "licenses": [
@@ -993,7 +1007,7 @@
               "APACHE20"
             ],
             "name": "py312-packaging",
-            "version": "26.2"
+            "version": "26.3"
           },
           {
             "licenses": [
@@ -1021,7 +1035,7 @@
               "APACHE20"
             ],
             "name": "shaderc",
-            "version": "2026.2_1"
+            "version": "2026.4"
           },
           {
             "licenses": [
@@ -1036,7 +1050,7 @@
               "APACHE20"
             ],
             "name": "simdjson",
-            "version": "4.6.11"
+            "version": "4.6.11_1"
           },
           {
             "licenses": [
@@ -1050,14 +1064,14 @@
               "PD"
             ],
             "name": "sqlite3",
-            "version": "3.53.3,1"
+            "version": "3.53.4,1"
           },
           {
             "licenses": [
               "LGPL21"
             ],
             "name": "srt",
-            "version": "1.5.5"
+            "version": "1.5.6"
           },
           {
             "licenses": [
@@ -1066,14 +1080,14 @@
               "BSD3CLAUSE"
             ],
             "name": "svt-av1",
-            "version": "4.1.0"
+            "version": "4.2.0"
           },
           {
             "licenses": [
               "BSD3CLAUSE"
             ],
             "name": "tiff",
-            "version": "4.7.1_1"
+            "version": "4.7.2"
           },
           {
             "licenses": [
@@ -1087,14 +1101,14 @@
               "APACHE20"
             ],
             "name": "vulkan-loader",
-            "version": "1.4.356"
+            "version": "1.4.360"
           },
           {
             "licenses": [
               "MIT"
             ],
             "name": "wayland",
-            "version": "1.25.0"
+            "version": "1.26.0"
           },
           {
             "licenses": [
@@ -1329,7 +1343,7 @@
           {
             "name": "corepack",
             "purl": "",
-            "version": "0.35.0"
+            "version": "0.36.0"
           },
           {
             "name": "cors",
@@ -2097,7 +2111,7 @@
           {
             "name": "packaging",
             "purl": "",
-            "version": "26.2"
+            "version": "26.3"
           }
         ],
         "ruby": [],
@@ -2106,7 +2120,7 @@
       "source": "upstream",
       "summary": {
         "dotnet": 0,
-        "freebsd": 157,
+        "freebsd": 159,
         "go": 0,
         "java": 0,
         "node": 189,
@@ -2114,7 +2128,7 @@
         "python": 3,
         "ruby": 0,
         "rust": 0,
-        "total": 349
+        "total": 351
       }
     }
   }
