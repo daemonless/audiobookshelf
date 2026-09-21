@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-16T22:35:00Z",
+  "generated": "2026-09-21T22:34:21Z",
   "image": "audiobookshelf",
   "tags": {
     "latest": {
       "app_version": "2.36.1",
       "arch": "amd64",
-      "generated": "2026-09-16T22:33:30Z",
+      "generated": "2026-09-21T22:17:04Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -63,6 +63,13 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-devmatch",
+            "version": "15.1"
+          },
+          {
+            "licenses": [
+              "BSD-3-Clause"
+            ],
+            "name": "FreeBSD-dhclient",
             "version": "15.1"
           },
           {
@@ -188,6 +195,13 @@
             "licenses": [
               "BSD2CLAUSE"
             ],
+            "name": "FreeBSD-resolvconf",
+            "version": "15.1"
+          },
+          {
+            "licenses": [
+              "BSD2CLAUSE"
+            ],
             "name": "FreeBSD-runtime",
             "version": "15.1p3"
           },
@@ -266,7 +280,7 @@
               "GPLv3+"
             ],
             "name": "bash",
-            "version": "5.3.15"
+            "version": "5.3.20"
           },
           {
             "licenses": [
@@ -929,14 +943,14 @@
               "BSD3CLAUSE"
             ],
             "name": "openexr",
-            "version": "3.4.15_1"
+            "version": "3.4.15_2"
           },
           {
             "licenses": [
               "BSD2CLAUSE"
             ],
             "name": "openjph",
-            "version": "0.31.0"
+            "version": "0.32.0"
           },
           {
             "licenses": [
@@ -1021,7 +1035,7 @@
               "GPLv3"
             ],
             "name": "readline",
-            "version": "8.3.3"
+            "version": "8.3.6"
           },
           {
             "licenses": [
@@ -1071,7 +1085,7 @@
               "LGPL21"
             ],
             "name": "srt",
-            "version": "1.5.6"
+            "version": "1.5.7_1"
           },
           {
             "licenses": [
@@ -1094,7 +1108,7 @@
               "BSD2CLAUSE+PATENT"
             ],
             "name": "vmaf",
-            "version": "3.2.0"
+            "version": "3.2.1"
           },
           {
             "licenses": [
@@ -1136,7 +1150,7 @@
               "BSD2CLAUSE"
             ],
             "name": "xxhash",
-            "version": "0.8.3"
+            "version": "0.8.4"
           },
           {
             "licenses": [
@@ -2120,7 +2134,7 @@
       "source": "upstream",
       "summary": {
         "dotnet": 0,
-        "freebsd": 159,
+        "freebsd": 161,
         "go": 0,
         "java": 0,
         "node": 189,
@@ -2128,7 +2142,7 @@
         "python": 3,
         "ruby": 0,
         "rust": 0,
-        "total": 351
+        "total": 353
       }
     }
   }
