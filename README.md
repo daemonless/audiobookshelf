@@ -40,9 +40,9 @@ services:
       - PGID=1000  # Group ID for the application process
       - TZ=UTC  # Timezone for the container
     volumes:
-      - "/path/to/containers/audiobookshelf:/config"
-      - "/path/to/containers/audiobookshelf/metadata:/metadata"
-      - "/path/to/containers/audiobookshelf/audiobooks:/audiobooks"
+      - "/containers/audiobookshelf:/config"
+      - "/containers/audiobookshelf/metadata:/metadata"
+      - "/containers/audiobookshelf/audiobooks:/audiobooks"
     ports:
       - "13378:13378"
     # always (not unless-stopped) so FreeBSD's podman rc.d auto-starts it at boot
@@ -89,11 +89,11 @@ services:
       - audiobookshelf_audiobooks: /audiobooks
 volumes:
   audiobookshelf:
-    device: '/path/to/containers/audiobookshelf'
+    device: '/containers/audiobookshelf'
   audiobookshelf_metadata:
-    device: '/path/to/containers/audiobookshelf/metadata'
+    device: '/containers/audiobookshelf/metadata'
   audiobookshelf_audiobooks:
-    device: '/path/to/containers/audiobookshelf/audiobooks'
+    device: '/containers/audiobookshelf/audiobooks'
 ```
 
 **Makejail**:
@@ -124,9 +124,9 @@ podman run -d --name audiobookshelf \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=UTC \
-  -v /path/to/containers/audiobookshelf:/config \
-  -v /path/to/containers/audiobookshelf/metadata:/metadata \
-  -v /path/to/containers/audiobookshelf/audiobooks:/audiobooks \
+  -v /containers/audiobookshelf:/config \
+  -v /containers/audiobookshelf/metadata:/metadata \
+  -v /containers/audiobookshelf/audiobooks:/audiobooks \
   ghcr.io/daemonless/audiobookshelf:latest
 ```
 
@@ -145,9 +145,9 @@ appjail oci run -Pd \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=UTC \
-  -o fstab="/path/to/containers/audiobookshelf /config <pseudofs>" \
-  -o fstab="/path/to/containers/audiobookshelf/metadata /metadata <pseudofs>" \
-  -o fstab="/path/to/containers/audiobookshelf/audiobooks /audiobooks <pseudofs>" \
+  -o fstab="/containers/audiobookshelf /config <pseudofs>" \
+  -o fstab="/containers/audiobookshelf/metadata /metadata <pseudofs>" \
+  -o fstab="/containers/audiobookshelf/audiobooks /audiobooks <pseudofs>" \
   ghcr.io/daemonless/audiobookshelf:latest audiobookshelf
 ```
 
@@ -176,9 +176,9 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - "/path/to/containers/audiobookshelf:/config"
-      - "/path/to/containers/audiobookshelf/metadata:/metadata"
-      - "/path/to/containers/audiobookshelf/audiobooks:/audiobooks"
+      - "/containers/audiobookshelf:/config"
+      - "/containers/audiobookshelf/metadata:/metadata"
+      - "/containers/audiobookshelf/audiobooks:/audiobooks"
 ```
 
 Save as `bastille-compose.yml`, then run `bastille up`. Or via CLI:
@@ -188,9 +188,9 @@ bastille create -O \
   --env PUID=1000 \
   --env PGID=1000 \
   --env TZ=UTC \
-  --volume /path/to/containers/audiobookshelf /config \
-  --volume /path/to/containers/audiobookshelf/metadata /metadata \
-  --volume /path/to/containers/audiobookshelf/audiobooks /audiobooks \
+  --volume /containers/audiobookshelf /config \
+  --volume /containers/audiobookshelf/metadata /metadata \
+  --volume /containers/audiobookshelf/audiobooks /audiobooks \
   audiobookshelf ghcr.io/daemonless/audiobookshelf:latest inherit
 ```
 
@@ -210,9 +210,9 @@ bastille create -O \
     ports:
       - "13378:13378"
     volumes:
-      - "/path/to/containers/audiobookshelf:/config"
-      - "/path/to/containers/audiobookshelf/metadata:/metadata"
-      - "/path/to/containers/audiobookshelf/audiobooks:/audiobooks"
+      - "/containers/audiobookshelf:/config"
+      - "/containers/audiobookshelf/metadata:/metadata"
+      - "/containers/audiobookshelf/audiobooks:/audiobooks"
 ```
 
 Save as `audiobookshelf-deploy.yaml`, then run `ansible-playbook audiobookshelf-deploy.yaml`.
