@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-21T22:34:21Z",
+  "generated": "2026-09-29T08:28:10Z",
   "image": "audiobookshelf",
   "tags": {
     "latest": {
-      "app_version": "2.36.1",
+      "app_version": "2.37.0",
       "arch": "amd64",
-      "generated": "2026-09-21T22:17:04Z",
+      "generated": "2026-09-29T08:26:31Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -273,7 +273,7 @@
               "BSD2CLAUSE"
             ],
             "name": "aom",
-            "version": "3.15.0"
+            "version": "3.15.1"
           },
           {
             "licenses": [
@@ -964,7 +964,7 @@
               "BSD3CLAUSE"
             ],
             "name": "p11-kit",
-            "version": "0.26.5"
+            "version": "0.26.5_1"
           },
           {
             "licenses": [
@@ -1028,7 +1028,7 @@
               "PSFL"
             ],
             "name": "python312",
-            "version": "3.12.14"
+            "version": "3.12.14_1"
           },
           {
             "licenses": [
@@ -1232,7 +1232,7 @@
           {
             "name": "@types/node",
             "purl": "",
-            "version": "18.11.18"
+            "version": "24.13.6"
           },
           {
             "name": "@types/validator",
@@ -1262,7 +1262,7 @@
           {
             "name": "audiobookshelf",
             "purl": "",
-            "version": "2.36.1"
+            "version": "2.37.0"
           },
           {
             "name": "axios",
@@ -2050,6 +2050,11 @@
             "version": "2.1.5"
           },
           {
+            "name": "undici-types",
+            "purl": "",
+            "version": "7.18.2"
+          },
+          {
             "name": "unpipe",
             "purl": "",
             "version": "1.0.0"
@@ -2137,12 +2142,12 @@
         "freebsd": 161,
         "go": 0,
         "java": 0,
-        "node": 189,
+        "node": 190,
         "php": 0,
         "python": 3,
         "ruby": 0,
         "rust": 0,
-        "total": 353
+        "total": 354
       }
     }
   }
