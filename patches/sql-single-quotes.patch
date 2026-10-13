@@ -1,0 +1,128 @@
+From ab613069dd4dabf10147b09c4c11022f8cad8ef6 (advplyr/audiobookshelf PR 5648)
+Subject: Use single quotes for SQL string literals
+
+diff --git a/server/Server.js b/server/Server.js
+index 30d2c8c394..caf1e27ae1 100644
+--- a/server/Server.js
++++ b/server/Server.js
+@@ -535,7 +535,7 @@ class Server {
+ 
+     // Remove series from hide from continue listening that no longer exist
+     try {
+-      const users = await Database.sequelize.query(`SELECT u.id, u.username, u.extraData, json_group_array(value) AS seriesIdsToRemove FROM users u, json_each(u.extraData->"seriesHideFromContinueListening") LEFT JOIN series se ON se.id = value WHERE se.id IS NULL GROUP BY u.id;`, {
++      const users = await Database.sequelize.query(`SELECT u.id, u.username, u.extraData, json_group_array(value) AS seriesIdsToRemove FROM users u, json_each(u.extraData->'seriesHideFromContinueListening') LEFT JOIN series se ON se.id = value WHERE se.id IS NULL GROUP BY u.id;`, {
+         model: Database.userModel,
+         type: Sequelize.QueryTypes.SELECT
+       })
+diff --git a/server/controllers/LibraryController.js b/server/controllers/LibraryController.js
+index 6bf36a7b44..ead7c088a2 100644
+--- a/server/controllers/LibraryController.js
++++ b/server/controllers/LibraryController.js
+@@ -1344,7 +1344,7 @@ class LibraryController {
+         {
+           libraryId: req.library.id
+         },
+-        Sequelize.where(Sequelize.literal(`(SELECT count(*) FROM json_each(libraryFiles) WHERE json_valid(libraryFiles) AND json_extract(json_each.value, "$.metadata.filename") = "${metadataFilename}")`), {
++        Sequelize.where(Sequelize.literal(`(SELECT count(*) FROM json_each(libraryFiles) WHERE json_valid(libraryFiles) AND json_extract(json_each.value, '$.metadata.filename') = '${metadataFilename}')`), {
+           [Sequelize.Op.gte]: 1
+         })
+       ]
+diff --git a/server/migrations/v2.17.4-use-subfolder-for-oidc-redirect-uris.js b/server/migrations/v2.17.4-use-subfolder-for-oidc-redirect-uris.js
+index 03797e35e5..e3366ecd8e 100644
+--- a/server/migrations/v2.17.4-use-subfolder-for-oidc-redirect-uris.js
++++ b/server/migrations/v2.17.4-use-subfolder-for-oidc-redirect-uris.js
+@@ -56,7 +56,7 @@ async function down({ context: { queryInterface, logger } }) {
+ }
+ 
+ async function getServerSettings(queryInterface, logger) {
+-  const result = await queryInterface.sequelize.query('SELECT value FROM settings WHERE key = "server-settings";')
++  const result = await queryInterface.sequelize.query("SELECT value FROM settings WHERE key = 'server-settings';")
+   if (!result[0].length) {
+     logger.error('[2.17.4 migration] Server settings not found')
+     throw new Error('Server settings not found')
+@@ -74,7 +74,7 @@ async function getServerSettings(queryInterface, logger) {
+ }
+ 
+ async function updateServerSettings(queryInterface, logger, serverSettings) {
+-  await queryInterface.sequelize.query('UPDATE settings SET value = :value WHERE key = "server-settings";', {
++  await queryInterface.sequelize.query("UPDATE settings SET value = :value WHERE key = 'server-settings';", {
+     replacements: {
+       value: JSON.stringify(serverSettings)
+     }
+diff --git a/server/models/User.js b/server/models/User.js
+index 9ad4772d5b..7b0de05d3f 100644
+--- a/server/models/User.js
++++ b/server/models/User.js
+@@ -438,7 +438,7 @@ class User extends Model {
+     if (cachedUser) return cachedUser
+ 
+     const user = await this.findOne({
+-      where: sequelize.where(sequelize.literal(`extraData->>"authOpenIDSub"`), sub),
++      where: sequelize.where(sequelize.literal(`extraData->>'authOpenIDSub'`), sub),
+       include: this.sequelize.models.mediaProgress
+     })
+ 
+diff --git a/server/scanner/LibraryScanner.js b/server/scanner/LibraryScanner.js
+index 7ccb17a11b..1448e65600 100644
+--- a/server/scanner/LibraryScanner.js
++++ b/server/scanner/LibraryScanner.js
+@@ -675,7 +675,7 @@ async function findLibraryItemByItemToFileInoMatch(libraryId, fullPath, isSingle
+       {
+         libraryId: libraryId
+       },
+-      sequelize.where(sequelize.literal('(SELECT count(*) FROM json_each(libraryFiles) WHERE json_valid(json_each.value) AND json_each.value->>"$.ino" = :inode)'), {
++      sequelize.where(sequelize.literal(`(SELECT count(*) FROM json_each(libraryFiles) WHERE json_valid(json_each.value) AND json_each.value->>'$.ino' = :inode)`), {
+         [sequelize.Op.gt]: 0
+       })
+     ],
+diff --git a/server/utils/migrations/dbMigration.js b/server/utils/migrations/dbMigration.js
+index 1d4c47985b..0fe01ab309 100644
+--- a/server/utils/migrations/dbMigration.js
++++ b/server/utils/migrations/dbMigration.js
+@@ -1607,7 +1607,7 @@ async function migrationPatch2BookAuthors(ctx, offset = 0) {
+   for (const bookAuthor of bookAuthors) {
+     if (bookAuthor.author?.createdAt) {
+       const dateString = bookAuthor.author.createdAt.toISOString().replace('T', ' ').replace('Z', '')
+-      bulkUpdateItems.push(`("${bookAuthor.id}","${dateString}")`)
++      bulkUpdateItems.push(`('${bookAuthor.id}','${dateString}')`)
+     }
+   }
+ 
+@@ -1642,7 +1642,7 @@ async function migrationPatch2BookSeries(ctx, offset = 0) {
+   for (const bookSeries of allBookSeries) {
+     if (bookSeries.series?.createdAt) {
+       const dateString = bookSeries.series.createdAt.toISOString().replace('T', ' ').replace('Z', '')
+-      bulkUpdateItems.push(`("${bookSeries.id}","${dateString}")`)
++      bulkUpdateItems.push(`('${bookSeries.id}','${dateString}')`)
+     }
+   }
+ 
+diff --git a/server/utils/queries/libraryItemsBookFilters.js b/server/utils/queries/libraryItemsBookFilters.js
+index cac9a7d17d..629dd0eb42 100644
+--- a/server/utils/queries/libraryItemsBookFilters.js
++++ b/server/utils/queries/libraryItemsBookFilters.js
+@@ -596,9 +596,9 @@ module.exports = {
+       // When collapsing series and sorting by title then use the series name instead of the book title
+       //  for this set an attribute "display_title" to use in sorting
+       if (global.ServerSettings.sortingIgnorePrefix) {
+-        bookAttributes.include.push([Sequelize.literal(`IFNULL((SELECT s.nameIgnorePrefix FROM bookSeries AS bs, series AS s WHERE bs.seriesId = s.id AND bs.bookId = book.id AND bs.id IN (${bookSeriesToInclude.map((v) => `"${v.id}"`).join(', ')})), \`libraryItem\`.\`titleIgnorePrefix\`)`), 'display_title'])
++        bookAttributes.include.push([Sequelize.literal(`IFNULL((SELECT s.nameIgnorePrefix FROM bookSeries AS bs, series AS s WHERE bs.seriesId = s.id AND bs.bookId = book.id AND bs.id IN (${bookSeriesToInclude.map((v) => `'${v.id}'`).join(', ')})), \`libraryItem\`.\`titleIgnorePrefix\`)`), 'display_title'])
+       } else {
+-        bookAttributes.include.push([Sequelize.literal(`IFNULL((SELECT s.name FROM bookSeries AS bs, series AS s WHERE bs.seriesId = s.id AND bs.bookId = book.id AND bs.id IN (${bookSeriesToInclude.map((v) => `"${v.id}"`).join(', ')})), \`libraryItem\`.\`title\`)`), 'display_title'])
++        bookAttributes.include.push([Sequelize.literal(`IFNULL((SELECT s.name FROM bookSeries AS bs, series AS s WHERE bs.seriesId = s.id AND bs.bookId = book.id AND bs.id IN (${bookSeriesToInclude.map((v) => `'${v.id}'`).join(', ')})), \`libraryItem\`.\`title\`)`), 'display_title'])
+       }
+     }
+ 
+diff --git a/server/utils/queries/libraryItemsPodcastFilters.js b/server/utils/queries/libraryItemsPodcastFilters.js
+index 8bb5dc110c..29ec6cf672 100644
+--- a/server/utils/queries/libraryItemsPodcastFilters.js
++++ b/server/utils/queries/libraryItemsPodcastFilters.js
+@@ -563,7 +563,7 @@ module.exports = {
+    * @returns {Promise<{ totalSize:number, totalDuration:number, numAudioFiles:number, totalItems:number}>}
+    */
+   async getPodcastLibraryStats(libraryId) {
+-    const [sizeResults] = await Database.sequelize.query(`SELECT SUM(li.size) AS totalSize FROM libraryItems li WHERE li.mediaType = "podcast" AND li.libraryId = :libraryId;`, {
++    const [sizeResults] = await Database.sequelize.query(`SELECT SUM(li.size) AS totalSize FROM libraryItems li WHERE li.mediaType = 'podcast' AND li.libraryId = :libraryId;`, {
+       replacements: {
+         libraryId
+       }

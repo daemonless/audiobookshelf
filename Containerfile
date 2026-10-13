@@ -19,7 +19,7 @@ ARG NUSQLITE3_PATH="${NUSQLITE3_DIR}/libnusqlite3"
 FROM ghcr.io/daemonless/base:${BASE_VERSION} AS build-client
 
 RUN pkg update && pkg install -y \
-    node20 npm-node20 \
+    node24 npm-node24 \
     ca_root_nss \
     && pkg clean -ay
 
@@ -40,7 +40,7 @@ RUN npm ci && npm run generate
 FROM ghcr.io/daemonless/base:${BASE_VERSION} AS build-server
 
 RUN pkg update && pkg install -y \
-    node20 npm-node20 python3 \
+    node24 npm-node24 python3 \
     gmake pkgconf sqlite3 \
     FreeBSD-clang FreeBSD-lld FreeBSD-toolchain FreeBSD-clibs-dev FreeBSD-runtime-dev \
     ca_root_nss \
@@ -58,6 +58,14 @@ RUN ABS_VERSION=$(fetch -qo - "https://api.github.com/repos/advplyr/audiobookshe
     tar xzf - -C /build/abs --strip-components=1
 
 WORKDIR /build/abs
+# PR 5648: node24 links the system sqlite3 (SQLITE_DQS=0), which shadows the
+# addon's bundled copy, so double-quoted SQL strings fail. Skipped once merged.
+COPY patches/ /tmp/patches/
+RUN if grep -q 'extraData->>"authOpenIDSub"' server/models/User.js; then \
+        patch -p1 -s < /tmp/patches/sql-single-quotes.patch; \
+    fi && \
+    ! grep -rqE -e '->>?"' -e '"\$\.' server --include='*.js'
+
 # npm 12 blocks install scripts until approved, so `npm rebuild` silently
 # builds nothing. Approve sqlite3 explicitly, then check the artifact.
 RUN npm install --omit=dev --omit=optional --ignore-scripts && \
@@ -71,7 +79,7 @@ FROM ghcr.io/daemonless/base:${BASE_VERSION}
 ARG NUSQLITE3_DIR
 ARG NUSQLITE3_PATH
 ARG FREEBSD_ARCH=amd64
-ARG PACKAGES="node20 ffmpeg sqlite3 libnusqlite3"
+ARG PACKAGES="node24 ffmpeg sqlite3 libnusqlite3"
 ARG UPSTREAM_URL="https://api.github.com/repos/advplyr/audiobookshelf/releases/latest"
 ARG UPSTREAM_JQ=".tag_name"
 ARG HEALTHCHECK_ENDPOINT="http://localhost:13378/"
