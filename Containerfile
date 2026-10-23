@@ -16,7 +16,7 @@ ARG NUSQLITE3_DIR="/usr/local/lib"
 ARG NUSQLITE3_PATH="${NUSQLITE3_DIR}/libnusqlite3"
 
 ### STAGE 1: Build client (Nuxt/Vue) ###
-FROM ghcr.io/daemonless/base:${BASE_VERSION} AS build-client
+FROM ghcr.io/daemonless/base-exec:${BASE_VERSION} AS build-client
 
 RUN pkg update && pkg install -y \
     node24 npm-node24 \
@@ -37,7 +37,7 @@ WORKDIR /build/abs/client
 RUN npm ci && npm run generate
 
 ### STAGE 2: Build server (Node.js + native sqlite3) ###
-FROM ghcr.io/daemonless/base:${BASE_VERSION} AS build-server
+FROM ghcr.io/daemonless/base-exec:${BASE_VERSION} AS build-server
 
 RUN pkg update && pkg install -y \
     node24 npm-node24 python3 \
