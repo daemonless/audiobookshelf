@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-23T10:24:54Z",
+  "generated": "2026-10-23T20:56:13Z",
   "image": "audiobookshelf",
   "tags": {
     "latest": {
-      "app_version": "2.37.1",
+      "app_version": "2.37.2",
       "arch": "amd64",
-      "generated": "2026-10-23T10:17:18Z",
+      "generated": "2026-10-23T20:54:47Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -309,7 +309,7 @@
               "MIT"
             ],
             "name": "c-ares",
-            "version": "1.34.8"
+            "version": "1.34.9"
           },
           {
             "licenses": [
@@ -1278,7 +1278,7 @@
           {
             "name": "audiobookshelf",
             "purl": "",
-            "version": "2.37.1"
+            "version": "2.37.2"
           },
           {
             "name": "axios",
