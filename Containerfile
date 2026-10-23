@@ -74,7 +74,7 @@ RUN npm install --omit=dev --omit=optional --ignore-scripts && \
     test -f node_modules/sqlite3/build/Release/node_sqlite3.node
 
 ### STAGE 3: Runtime image ###
-FROM ghcr.io/daemonless/base:${BASE_VERSION}
+FROM ghcr.io/daemonless/base-exec:${BASE_VERSION}
 
 ARG NUSQLITE3_DIR
 ARG NUSQLITE3_PATH
@@ -129,7 +129,9 @@ RUN mkdir -p /config /metadata && chown bsd:bsd /config /metadata /app && \
     chmod -R a+rX /app
 
 COPY root/ /
-RUN chmod +x /etc/services.d/audiobookshelf/run
+RUN chmod +x /daemonless/libexec/audiobookshelf
+
+CMD ["/daemonless/libexec/audiobookshelf"]
 
 # --- Expose (Injected by Generator) ---
 EXPOSE 13378

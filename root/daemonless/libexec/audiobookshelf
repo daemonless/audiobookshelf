@@ -1,5 +1,5 @@
 #!/bin/sh
-# Audiobookshelf s6 service
+# Start audiobookshelf; /init has already dropped to the run user.
 
 export HOME=/config
 export NODE_ENV=production
@@ -12,4 +12,4 @@ export NUSQLITE3_DIR="${NUSQLITE3_DIR:-/usr/local/lib}"
 export NUSQLITE3_PATH="${NUSQLITE3_PATH:-${NUSQLITE3_DIR}/libnusqlite3}"
 
 cd /app
-exec /usr/local/bin/s6-setuidgid bsd /usr/local/bin/node index.js
+exec /usr/local/bin/node index.js
